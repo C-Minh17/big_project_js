@@ -1,0 +1,529 @@
+.form-box{
+    background-color: #f9f9f9;
+    position: relative;
+    z-index: 1;
+}
+
+.form-box .form{
+    padding:70px 0;
+}
+.form-box .form .all-list .map{
+    width:100%;
+    height:40px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background-color:#e04f67;
+    color:#fff;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+.form-box .form .all-list .map:hover{
+    background-color: #333;
+}
+.form-box .form .all-list .map p{
+    font-size: 13px;
+    font-weight:600;
+}
+.form-box .form .all-list .category{
+    width:100%;
+    border:1px #DDDDDD solid;
+    margin-bottom:30px ;
+}
+.form-box .form .all-list .category a{
+    display: flex;
+    width:100%;
+    height:45px;
+    border-bottom:1px #DDDDDD solid;
+    justify-content: space-between;
+    align-items: center;
+    padding:0 20px;
+    color:black;
+}
+.form-box .form .all-list .category span{
+    font-size:15px;
+}
+.form-box .form .all-list .category i{
+    font-size:19px;
+    margin-right: 10px;
+}
+
+
+.form-box .form .all-list .filters{
+    border:1px #DDDDDD solid;
+    overflow: hidden;
+    padding:20px;
+    transition: max-height 0.5s linear;
+    max-height: 1500px;
+}
+.form-box .form .all-list .filters-none{
+    transition: max-height 0.5s linear;
+    max-height: 64px;
+}
+.form-box .form .all-list .filters .logo{
+    display:flex;
+    align-items: center;
+    background-color: #f9f9f9;
+    margin-bottom: 20px;
+}
+.form-box .form .all-list .filters .logo i{
+    font-size:20px;
+    margin-right: 10px;
+}
+.form-box .form .all-list .filters .logo span{
+    font-size:16px;
+}
+
+.form-box .form .all-list .filters .price{
+    margin:14px 0;
+}
+.form-box .form .all-list .filters .price p{
+    font-size:13px;
+    font-weight: 500;
+}
+.form-box .form .all-list .filters .price input{
+    width:100%;
+    margin-top:40px;
+}
+
+.form-box .form .all-list .reating{
+    margin:14px 0;
+}
+.form-box .form .all-list .filters .reating p{
+    font-size:13px;
+    font-weight: 500;
+}
+.form-box .form .all-list .filters .reating label {
+    display: flex;
+    align-items: center;
+}
+.form-box .form .all-list .filters .reating label input{
+    transform:scale(1.4);
+    margin-right: 5px;
+}
+.form-box .form .all-list .filters .reating label i{
+    display: block;
+    font-size:14px;
+    margin:8px 4px;
+    color: #EFC565;
+}
+
+.form-box .form .all-list .checkbox-filter{
+    margin:14px 0;
+}
+.form-box .form .all-list .filters .checkbox-filter p{
+    font-size:13px;
+    font-weight: 500;
+}
+.form-box .form .all-list .filters .checkbox-filter label {
+    display: flex;
+    align-items: center;
+}
+.form-box .form .all-list .filters .checkbox-filter label input{
+    transform:scale(1.4);
+    margin-right: 5px;
+}
+.form-box .form .all-list .filters .checkbox-filter label span{
+    display: block;
+    font-size:14px;
+    margin:5px 4px;
+}
+.form-box .form .all-list .filters p{
+    margin-bottom:10px;
+}
+/* ------ */
+
+
+.form-box .form .all-list .help{
+    text-align: center;
+    border:1px #DDDDDD solid;
+    margin:30px 0;
+    width:100%;
+}
+.form-box .form .all-list .help i{
+    font-size:50px;
+    margin-top:40px;
+}
+.form-box .form .all-list .help .text{
+    font-size:20px;
+    font-weight: 500;
+}
+.form-box .form .all-list .help .text b{
+    display: inline-block;
+    font-size:20px;
+    font-weight: 500;
+    color:#e04f67;
+    margin-top:10px;
+}
+.form-box .form .all-list .help .phone{
+    font-size: 26px;
+    display: block;
+    margin: 0;
+    margin-bottom: 20px;
+    color: #008489
+}
+.form-box .form .all-list .help .day{
+    font-size: 12.5px;
+    margin-bottom: 20px;   
+}
+
+/* -------right---- */
+.form-box .content-form{
+    width:100%;
+}
+.form-box .content-form .nav{
+    width:100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border:1px #DDDDDD solid;
+    background-color: #fff;
+    border-radius: 4px;
+}
+.form-box .content-form .nav .sort{
+    width:20%;
+    border:none;
+    outline: none;
+    border-right:1px #DDDDDD solid ;
+    background-color: transparent;
+    height:40px;
+}
+.form-box .content-form .nav .icon{
+    font-size: 17px;
+    margin-right: 15px;
+    color:#868686 ;
+}
+.form-box .content-form .list-item{
+    margin:29px 0;
+}
+
+/* ------display List---- */
+.form-box .content-form .list-item .display-list {
+    display: block;
+}
+.form-box .content-form .list-item .display-list .item {
+    display: flex;
+    margin-bottom: 30px;
+}
+.form-box .content-form .list-item .display-list .item .img{
+    width:30%;
+    height:220px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px 0 0 5px;
+}
+.form-box .content-form .list-item .display-list .item .img img{
+    position: absolute;
+    object-fit: cover;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    transition: transform 0.4s ease;
+    transform: scale(1.1);
+    border-radius:5px 0 0 5px;
+}
+.form-box .content-form .list-item .display-list .item .img:hover img{
+    transition: transform 0.4s ease;
+    transform: scale(1);
+}
+.form-box .content-form .list-item .display-list .item .overlay{
+    border-radius:0 0 0 5px;
+}
+.form-box .content-form .list-item .display-list .item .img .top{
+    position: absolute;
+    transform: rotate(-45deg);
+    background-color: red;
+    color:white;
+    font-size: 9px;
+    font-weight: 600;
+    padding:3px 25px;
+    top:10px;
+    left:-25px;
+    z-index: 2;
+}
+.form-box .content-form .list-item .display-list .item .img .top{
+    position: absolute;
+    transform: rotate(-45deg);
+    background-color: red;
+    color:white;
+    font-size: 9px;
+    font-weight: 600;
+    padding:3px 20px;
+    top:10px;
+    left:-25px;
+    z-index: 2;
+}
+.form-box .content-form .list-item .display-list .item .img .wish{
+    position: absolute;
+    top:0px;
+    right:10px;
+    font-size: 30px;
+    color:rgb(239, 90, 114);
+}
+.form-box .content-form .list-item .display-list .item .img .wish:hover{
+    color:rgb(230, 34, 66);
+}
+.form-box .content-form .list-item .display-list .item .img .category{
+    position: absolute;
+    bottom:10px;
+    left:15px;
+    z-index: 2;
+    color: white;
+}
+
+.form-box .content-form .list-item .display-list .item .content{
+    width:55%;
+    height:220px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-left:25px;
+    background-color: #fff;
+    border-right: 1px #DDDDDD solid;
+}
+.form-box .content-form .list-item .display-list .item .content .evalual{
+    font-size:15px;
+    color: #EFC565;
+}
+.form-box .content-form .list-item .display-list .item .content .title b{
+    font-size:17px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.form-box .content-form .list-item .display-list .item .content .title{
+    font-size:17px; 
+}
+
+.form-box .content-form .list-item .display-list .item .content .text{
+    font-size:13px;
+    margin:10px 0;
+}
+.form-box .content-form .list-item .display-list .item .content .icon{
+    display:flex;
+}
+.form-box .content-form .list-item .display-list .item .content .icon div{
+    border:1px #DDDDDD solid;
+    margin-right: 10px;
+    width:35px;
+    height:35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.form-box .content-form .list-item .display-list .item .content .icon i{
+    font-size:19px;
+    color:#525151;
+}
+.form-box .content-form .list-item .display-list .item .price{
+    font-size:19px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.form-box .content-form .list-item .display-list .item .price p{
+    font-size:35px;
+    color:red;
+}
+.form-box .content-form .list-item .display-list .item .price .button-one{
+    border: none;
+    color: #fff;
+    background: #008489;
+    cursor: pointer;
+    padding: 7px 20px;
+    display: inline-block;
+    outline: none;
+    font-size: 13px;
+    border-radius: 3px;
+    font-weight: 600;
+    margin-top: 40px;
+    transition: all 0.3s linear;
+}
+.form-box .content-form .list-item .display-list .item .price .button-one:hover{
+    background-color: #333;
+}
+
+.form-box .content-form .list-item .display-list .item .price{
+    flex:1;
+    height:220px;
+    background-color:#fff;
+}
+
+
+.form-box .content-form .page{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form-box .content-form .page span a{
+    border:#c7c5c5 1px solid;
+    padding:5px 10px;
+    font-size: 16px;
+    transition: all 0.2s linear;
+    color:black;
+}
+.form-box .content-form .page span a{
+    margin:0 10px;
+}
+
+.form-box .content-form .page span:hover a{
+    background-color: #525151;
+    color:white;
+}
+
+
+.map-tour{
+    position: relative;
+    z-index: 1;
+    width:100%;
+    height:0vh;
+    transition: height 0.3s linear;
+}
+.map-tour iframe{
+    width:100%;
+    height: 100%;
+}
+.map-tour-none{
+    transition: height 0.3s linear;
+    height: 80vh;
+}
+
+/* -----display gird--- */
+.form-box .content-form .list-item .display-gird{
+    display: none;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.form-box .content-form .list-item .display-gird .item{
+    width:48%;
+    background-color: white;
+    box-shadow: 5px 5px 10px rgb(195, 193, 193);
+    margin-bottom: 40px;
+    border-radius: 5px;
+}
+.form-box .content-form .list-item .display-gird .item .img{
+    width:100%;
+    height:280px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px 5px 0 0;
+}
+.form-box .content-form .list-item .display-gird .item .img img{
+    width:100%;
+    height:100%;
+    position: absolute;
+    top:0;
+    transition: transform 0.4s ease;
+    transform: scale(1.1);
+}
+.form-box .content-form .list-item .display-gird .item .img:hover img{
+    transition: transform 0.4s ease;
+    transform: scale(1);
+}
+
+.form-box .content-form .list-item .display-gird .item .img .top{
+    position: absolute;
+    transform: rotate(-45deg);
+    background-color: red;
+    color:white;
+    font-size: 9px;
+    font-weight: 600;
+    padding:3px 25px;
+    top:10px;
+    left:-25px;
+    z-index: 2;
+}
+.form-box .content-form .list-item .display-gird .item .img .overlay{
+    border-radius: 0;
+}
+.form-box .content-form .list-item .display-gird .item .img .cate-price{
+    position: absolute;
+    z-index: 2;
+    bottom:5px;
+    color: white;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:0 15px;
+}
+.form-box .content-form .list-item .display-gird .item .img .cate-price .category{
+    display: flex;
+}
+.form-box .content-form .list-item .display-gird .item .img .cate-price .category i{
+    font-size:23px;
+}
+.form-box .content-form .list-item .display-gird .item .img .cate-price .category span{
+    font-size:17px;
+    margin-left: 5px;
+}
+.form-box .content-form .list-item .display-gird .item .img .cate-price .price{
+    font-size:30px;
+    font-weight: 700;
+}
+.form-box .content-form .list-item .display-gird .item .title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:0 15px;
+}
+.form-box .content-form .list-item .display-gird .item .title .text{
+    margin:10px 0;
+}
+.form-box .content-form .list-item .display-gird .item .title .text h2{
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+}
+.form-box .content-form .list-item .display-gird .item .title .text i{
+    font-size: 14px;
+    font-weight: 600;
+    color: #EFC565;
+}
+.form-box .content-form .list-item .display-gird .item .title .wish{
+    font-size: 30px;
+    color:rgb(239, 90, 114);
+}
+.form-box .content-form .list-item .display-gird .item .title .wish:hover{
+    color:rgb(230, 34, 66);
+}
+/* ------scroll --- */
+.form-box .content-form .list-item .display-gird .scroll-display-none{
+    transition: opacity 1.5s linear;
+    opacity: 0;
+}
+.form-box .content-form .list-item .display-gird .scroll-display{
+    transition: opacity 1.5s linear;
+    opacity: 1 ;
+}
+
+.form-box .content-form .list-item .display-list .scroll-display-none{
+    transition: opacity 1.5s linear;
+    opacity: 0;
+}
+.form-box .content-form .list-item .display-list .scroll-display{
+    transition: opacity 1.5s linear;
+    opacity: 1 ;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

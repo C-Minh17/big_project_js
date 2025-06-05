@@ -1,0 +1,844 @@
+/* ----header--- */
+header{
+    position: absolute;
+    width: 100%;
+    z-index: 99;
+}
+/* ----- */
+
+/* ---nav-bar----> */
+.nav-bar{
+    display:flex;
+    justify-content:space-between;
+    padding:9px 0;
+    color:white;
+}
+.nav-bar .phone{
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+}
+.nav-bar .phone p{
+    font-weight:600;
+    margin-left:5px
+}
+.nav-bar .task{
+    display:flex;
+}
+.nav-bar .task .sign-in{
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+}
+.nav-bar .task .wishlist{
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+}
+.nav-bar .task .sign-in a:nth-child(2){
+    margin-right:10px;
+    padding-right:10px;
+    border-right: 1px rgb(172, 167, 167) solid;
+}
+.nav-bar .task a{
+    margin-left:5px;
+    color: white;
+}
+/* ____________________ */
+
+
+/* ----Menu----- */
+.scroll-menu{
+    position: sticky;
+    top:0;
+}
+.tag-menu{
+    display: flex;
+}
+.tag-menu .logo .img{
+    background-image: url("/asset/img/logo_2x.png");
+    background-size: cover;
+    width:160px;
+    height:35px;
+}
+.tag-menu .logo {
+    width:25%;
+    height:100%;
+    margin:15px 0;
+}
+
+.tag-menu .menu{
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    width:50%;
+}
+.tag-menu .menu div a{
+    font-size:16px;
+    font-weight: 600;
+    color:white;
+}
+
+.tag-menu .extra{
+    width:25%;
+    display: flex;
+    align-items: center;
+    justify-content:flex-end;
+}
+.tag-menu .extra a{
+    font-size: 20px;
+    color:white;
+}
+.tag-menu .extra .search{
+    margin-right:10px;
+}
+
+/* scroll */
+.box-menu {
+    background-color: white;
+}
+.box-menu .tag-menu .menu div a{
+    color:black;
+}
+.nav-bar-none{
+    display: none;
+}
+.scroll{
+    position: sticky;
+    top:0;
+}
+.scroll hr{
+    display: none;
+}
+.box-menu .tag-menu .logo .img{
+    background-image: url("/asset/img/logo_sticky_2x.png");
+    background-size: cover;
+    width:160px;
+    height:35px;
+}
+.box-menu .tag-menu .extra a{
+    font-size: 20px;
+    color:black;
+}
+
+/* ---------- */
+
+/* ------slide-home----- */
+.carousel .carousel-inner .d-block{
+    height:650px;
+    object-fit: cover;
+    opacity:1;
+    filter: brightness(60%) contrast(110%);
+}
+.carousel .center{
+    bottom: 10.25rem;
+}
+.carousel .center h1{
+    font-size: 46px;
+    font-weight: 700;
+    text-transform: uppercase;
+
+}
+.carousel .center p{
+    font-size:23px;
+}
+.carousel .center .button a{
+    display: inline-block;
+    font-size:14px;
+    font-weight:600;
+    border:none;
+    background-color: #008489 ;
+    padding:10px 20px;
+    margin:15px 0;
+    border-radius: 5px;
+    color: white;
+}
+.carousel .center .button a:hover{
+    background-color: #333333;
+}
+/* -------- */
+
+/* -----category---- */
+.categorys{
+    margin-top:70px;
+    position: relative;
+}
+.categorys .box{
+    position: relative;
+    border-radius:10px;
+    overflow: hidden;
+    margin:5px 5px;
+}
+.categorys .slide{
+    padding:0;
+}
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40%;
+    background: linear-gradient(to top, black, transparent);
+    border-radius: 10px;
+}
+.categorys img{
+    max-width:100%;
+    height:auto;
+    border-radius:10px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+    transform: scale(1.05);
+}
+.categorys h2{
+    position: absolute;
+    font-size:25px;
+    font-weight:700;
+    bottom:10px;
+    left:25px;
+    color:white;
+
+}
+.categorys .slide:hover img{
+    transform: scale(1);
+}
+.categorys h2::after{
+    content: "700 locations";
+    display: flex;
+    font-size: 15px;
+    font-weight: 300;
+    transition: transform 0.4s ease;
+    transform:translate3d(0,70px,0)
+
+}
+.categorys .slide:hover h2::after{
+    transform:translate3d(0,0,0)
+}
+/* ----top tour  & top Hotel--- */
+.top-tour{
+    margin:50px 0;
+    background-color: var(--color-one);
+    position: relative;
+
+}
+.top-tour h2{
+    font-size:35px;
+    font-weight:600;
+    text-align: center;
+    padding-top:50px;
+}
+.top-tour h2 b{
+    color:#C75969;
+    font-weight: 600;
+}
+.top-tour p{
+    text-align: center;
+    font-size:20px;
+    margin-bottom: 40px;
+}
+
+.top-tour .box-tour .top{
+    position: absolute;
+    transform: rotate(-45deg);
+    background-color: red;
+    color:white;
+    font-size: 9px;
+    font-weight: 600;
+    padding:3px 20px;
+    top:10px;
+    left:-25px;
+    z-index: 2;
+}
+
+.top-tour .box-tour{
+    margin:15px;
+    position: relative;
+    background-color: #FFFFFF;
+    border: 2px solid rgba(0, 0, 0, 0.05); 
+    border-radius: 10px;
+    overflow: hidden;
+}
+.top-tour .box-tour .overlay {
+    position: absolute;
+    bottom: 80px;
+    left: 0;
+    right: 0;
+    height: 40%;
+    background: linear-gradient(to top, black, transparent);
+}
+.top-tour .box{
+    padding:0;
+}
+.top-tour .box-tour a{
+    display:block;
+    width:100%;
+    height:270px;
+    overflow: hidden;
+}
+.top-tour .box-tour img{
+    width:100%;
+    height:100%;
+    border-radius: 10px 10px 0 0;
+    transform:scale(1.15);
+    transition: transform 0.4s ease;
+}
+.top-tour .box-tour:hover img{
+    transform:scale(1);
+}
+.top-tour .box-tour .cate-price{
+    display: flex;
+    margin:0 15px;
+    position: absolute;
+    justify-content: space-between;
+    align-items: center;
+    bottom:80px;
+    color:white;
+    width:95%;
+}
+.top-tour .box-tour .cate-price .category{
+    font-size:16px ;
+}
+.top-tour .box-tour .cate-price .price{
+    font-size:30px ;
+    font-weight: 600;
+}
+.top-tour .box-tour .extra{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin:10px 20px;
+}
+.top-tour .box-tour .extra .title h4{
+    font-size: 16px;
+    margin: 0;
+    text-transform: uppercase;
+}
+.top-tour .box-tour .extra .title .evalual{
+    color:#E89D3A;
+}
+.top-tour .box-tour .extra .wish{
+    font-size:40px;
+    color:rgb(239, 90, 114);
+}
+.top-tour .box-tour .extra .wish:hover{
+    font-size:40px;
+    color:rgb(230, 34, 66);
+}
+.top-tour .prev{
+    position: absolute;
+    bottom:300px;
+    left:30px;
+    border-radius: 50px;
+    background-color: rgb(241, 237, 237);
+    width:35px;
+    height:35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.top-tour .next{
+    position: absolute;
+    bottom:300px;
+    right:30px;
+    border-radius: 50px;
+    background-color: rgb(241, 237, 237);
+    width:35px;
+    height:35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.top-tour .next:hover{
+    background-color: rgb(217, 209, 209);
+}
+.top-tour .prev:hover{
+    background-color: rgb(217, 209, 209);
+}
+.top-tour .button{
+    padding:50px;
+    text-align: center;
+}
+.top-tour .button a{
+    padding:10px 20px;
+    color: white;
+    font-size:13px;
+    font-weight: 600;
+    background-color: #008489;
+    border-radius: 5px;
+}
+.top-tour .button a:hover{
+    background-color: #333333;
+}
+.top-hotel{
+    margin-top:-50px;
+}
+.top-hotel .category{
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+}
+.top-hotel .type{
+    display: flex;
+    border: 2px white solid;
+    width:37px;
+    height:37px;
+    border-radius: 50px;
+    margin:10px 0;
+    margin-right: 5px;
+    justify-content: center;
+    align-items: center;
+
+}
+/* ----------------- */
+
+
+/* --------------Plan your tour---------- */
+.plan-tour{
+    position: relative;
+    text-align:center;
+}
+.plan-tour h2{
+    font-size:32px;
+    font-weight: 700;
+    margin-top: 70px;
+}
+.plan-tour h2 b{
+    font-size:32px;
+    font-weight: 700;
+    color:#C75969;
+    text-transform: uppercase;
+}
+.plan-tour .text{
+    font-size:20px;
+    margin-bottom: 60px;
+}
+.plan-tour .boxContend h3{
+    font-size: 18px;
+    margin:20px 0 10px;
+}
+.plan-tour .boxContend p{
+    font-size: 14px;
+}
+.plan-tour .handout{
+    text-align: start;
+    position: relative;
+    width: 100%;
+    margin:40px 0;
+    padding:80px 70px;
+    color:white;
+}
+.plan-tour .handout::before{
+    content: "";
+    position:absolute;
+    inset: 0;
+    background-image: url("/asset/img/banner_bg_desktop.jpg");
+    background-size:cover;
+    background-position: center;
+    filter:brightness(90%) contrast(110%);
+    z-index: -1;
+}
+.plan-tour .handout .title{
+    font-size: 35px;
+    font-weight: 700;
+    margin-top:40px;
+}
+.plan-tour .handout div{
+    font-size: 24px;
+}
+.plan-tour .handout button{
+    border: 0px ;
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: 600;
+    padding:7px 20px;
+    margin:20px 0;
+    color:white;
+    background-color: #008489;
+}
+.plan-tour button:hover{
+    background-color: #333333;
+}
+
+/* ---------new--------- */
+.news {
+    background-color: var(--color-one);
+    padding-bottom:120px;
+    position: relative;
+    z-index: 2;
+}
+.news .title{
+    text-align: center;
+    font-weight: 700;
+    font-size: 30px;
+    text-transform: uppercase;
+    padding-top:50px;
+    margin: 0;
+}
+.news .title b{
+    color:#C75969;
+}
+.news .text{
+    text-align: center;
+    font-weight: 400;
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+.news .box-contend .contend {
+    display:flex;
+    margin:20px 0;
+}
+.news .box-contend a {
+    display:block;
+}
+.news .box-contend .contend .img {
+    width:400px;
+    overflow: hidden;
+    border-radius: 5px;
+    position: relative;
+}
+.news .box-contend .contend .img img{
+    width: 100%;
+    transform: scale(1.2);
+    transition: transform 0.4s ease;
+    border-radius: 5px;
+}
+.news .box-contend .contend:hover .img img{
+    transform: scale(1);
+}
+.news .box-contend .contend .img div{
+    position: absolute;
+    z-index:2;
+    top:0;
+    right: 0px;
+    width:50px;
+    background-color: #FFC107;
+    text-align: center;
+    color: white;
+    font-weight: 600;
+}
+.news .box-contend .contend .info {
+    margin-left: 25px;
+    color:black;
+}
+.news .box-contend .contend .info div{
+    font-size: 14px;
+    font-weight: 500;
+    color: #aea8a8;
+}
+.news .box-contend .contend .info h5{
+    font-size: 18px;
+}
+.news .box-contend .contend .info p{
+    font-size: 12px;
+}
+
+/* ----info-web--------- */
+.info-web{
+    background-color: #222;
+    position: sticky;
+    z-index: 0;
+    bottom:0;
+    width: 100%;
+    display: none;
+}
+.info-web .info a,select{
+    display: block;
+}
+.info-web .info{
+    display: flex;
+    color: white;
+    padding:40px 0;
+    padding-bottom: 30px;
+}
+.info-web .info .held{
+    width:34%;
+}
+.info-web .info .held a{
+    margin:15px 0;
+    display: flex;
+    align-items: center;
+    color: #fdf7ac;
+}
+.info-web .info .held a i{
+    font-size: 25px;
+    margin-right: 10px;
+}
+.info-web .info .held a:hover{
+    color:white;
+}
+.info-web .info .about,.discover{
+    width:26.33%;
+    font-size:14px;
+}
+.info-web .info .about a{
+    margin:10px 0;
+    color:white;
+    transition:transform 0.3 ease;
+}
+.info-web .info .discover a{
+    margin:10px 0;
+    color:white;
+    transition:transform 0.3 ease;
+}
+.info-web .info .about a:hover{
+    color:#999;
+}
+.info-web .info .discover a:hover{
+    color:#999;
+}
+.info-web .info .setting{
+    flex:1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.info-web .info .setting select{
+    margin:10px 0;
+    width:190px;
+    height:37px;
+    background-color: #434343;
+    color:#999;
+    border:none;
+    border-radius: 4px;
+}
+
+.info-web hr{
+    height: 1px;
+    background-color: white; 
+    border: none;
+}
+
+.info-web .page{
+    text-align: center;
+}
+.info-web .page .mxh{
+    margin-top:30px;
+}
+.info-web .page .mxh a{
+    margin:0 10px;
+    font-size: 20px;
+    color:white;
+}
+.info-web .page p{
+    color:#999;
+    padding: 0;
+    padding:20px 0;
+    padding-bottom:30px ;
+    font-size: 14px;
+}
+.infoNone{
+    display: block;
+}
+/* ----------------- */
+
+/* ----------tag Tours-----
+---------------------- */
+
+/* -----home---- */
+.tour-home{
+    position: relative;
+    width:100%;
+    height:500px;
+    z-index: 1;
+}
+.tour-home::before{
+    content: "";
+    position: absolute;
+    background-image: url("/asset/img/tours/parallax_bg_1.jpg");
+    background-size: cover;
+    width:100%;
+    height:100%;
+    filter:brightness(50%) contrast(120%);
+}
+.tour-home .title{
+    position: absolute;
+    z-index: 1;
+    top:200px;
+    color: white;
+    width: 100%;
+    text-align: center;
+}
+.tour-home .title h1{
+    font-size: 52px;
+    font-weight: bold;
+}
+.tour-home .title p{
+    font-size: 20px;
+}
+
+/* --------tour tag---- */
+.tour-tag{
+    border-bottom: 1px rgb(193, 189, 189) solid;
+    background-color: white;
+    position: relative;
+    z-index: 1;
+}
+.tour-tag .text{
+    padding:10px;
+}
+.tour-tag .text span{
+    font-size:12px;
+}
+
+/* -----info--- */
+.info-alike{
+    display:block;
+    z-index: 0;
+}
+
+/* ------hotels----- */
+/* --------------- */
+
+/* -----home---- */
+.hotel-home{
+    position: relative;
+    width:100%;
+    height:500px;
+    z-index: 1;
+}
+.hotel-home::before{
+    content: "";
+    position: absolute;
+    background-image: url("/asset/img/hotels/hotels_bg.jpg");
+    background-size: cover;
+    width:100%;
+    height:100%;
+    filter:brightness(50%) contrast(120%);
+}
+.hotel-home .title{
+    position: absolute;
+    z-index: 1;
+    top:200px;
+    color: white;
+    width: 100%;
+    text-align: center;
+}
+.hotel-home .title h1{
+    font-size: 52px;
+    font-weight: bold;
+}
+.hotel-home .title p{
+    font-size: 20px;
+}
+
+/* -------lisst item---- */
+.form-box .content-form .list-item .display-list .item .img .category{
+    display: flex;
+    align-items: center;
+}
+.form-box .content-form .list-item .display-list .item .img .category .eva{
+    display: flex;
+    border: 2px white solid;
+    width: 37px;
+    height: 37px;
+    margin:0;
+    margin-right: 5px;
+    border-radius: 50px;
+    justify-content: center;
+    align-items: center;
+}
+.form-box .content-form .list-item .display-list .item .img .category span:nth-child(2){
+    font-size: 15px;
+    font-weight: 500;
+    margin-left: 5px;
+}
+
+.form-box .content-form .list-item .display-gird .item .img .category{
+    display: flex;
+    align-items: center;
+}
+.form-box .content-form .list-item .display-gird .item .img .category .eva{
+    display: flex;
+    border: 2px white solid;
+    width: 37px;
+    height: 37px;
+    margin:0;
+    margin-right: 5px;
+    border-radius: 50px;
+    justify-content: center;
+    align-items: center;
+}
+.form-box .content-form .list-item .display-gird .item .img .category span:nth-child(2){
+    font-size: 16px;
+    font-weight: 600;
+}
+.form-box .content-form .list-item .display-gird .item .title .text h2 b{
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* -------transportations------- */
+/* ------------------------ */
+
+
+/* ----home--- */
+.transportation-home{
+    position: relative;
+    width:100%;
+    height:500px;
+    z-index: 1;
+}
+.transportation-home::before{
+    content: "";
+    position: absolute;
+    background-image: url("/asset/img/transportations/transfer_top.jpg");
+    background-size: cover;
+    width:100%;
+    height:100%;
+    filter:brightness(50%) contrast(120%);
+}
+.transportation-home .title{
+    position: absolute;
+    z-index: 1;
+    top:200px;
+    color: white;
+    width: 100%;
+    text-align: center;
+}
+.transportation-home .title h1{
+    font-size: 52px;
+    font-weight: bold;
+}
+.transportation-home .title p{
+    font-size: 20px;
+}
+
+
+
+/* ----------tag restaurant-----
+---------------------- */
+
+/* -----home---- */
+.restaurant-home{
+    position: relative;
+    width:100%;
+    height:500px;
+    z-index: 1;
+}
+.restaurant-home::before{
+    content: "";
+    position: absolute;
+    background-image: url("/asset/img/restaurant/restaurant_top.jpg");
+    background-size: cover;
+    width:100%;
+    height:100%;
+    filter:brightness(50%) contrast(120%);
+}
+.restaurant-home .title{
+    position: absolute;
+    z-index: 1;
+    top:200px;
+    color: white;
+    width: 100%;
+    text-align: center;
+}
+.restaurant-home .title h1{
+    font-size: 52px;
+    font-weight: bold;
+}
+.restaurant-home .title p{
+    font-size: 20px;
+}
+
+
+
+

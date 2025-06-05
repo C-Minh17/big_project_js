@@ -1,0 +1,301 @@
+import {divHeader} from "/asset/javascript/var.js"
+import {divNavBar} from "/asset/javascript/var.js"
+import {divMenu} from "/asset/javascript/var.js"
+import {divFilterTransportation} from "/asset/javascript/var.js"
+import {divSettingTransportation} from "/asset/javascript/var.js"
+import {divDisplayList} from "/asset/javascript/var.js"
+import {divButtonMapTransportation} from "/asset/javascript/var.js"
+import {divDisplayGird} from "/asset/javascript/var.js"
+import {divTransportationPre} from "/asset/javascript/var.js"
+import {divTransportationNumber} from "/asset/javascript/var.js"
+import {divTransportationNext} from "/asset/javascript/var.js"
+import {divTransportationSort} from "/asset/javascript/var.js"
+
+
+
+
+
+import {dataApi} from "/asset/javascript/fetchApi.js"
+
+let urlTransportation="https://project-api-ptit.vercel.app/api";
+
+
+window.addEventListener("scroll",()=>{
+    let value=window.scrollY>75;
+    if (value==true){
+        divHeader.classList.add("scroll");
+        divNavBar.classList.add("nav-bar-none");
+        divMenu.classList.add("box-menu");
+    }else{
+        divHeader.classList.remove("scroll");
+        divNavBar.classList.remove("nav-bar-none");
+        divMenu.classList.remove("box-menu");
+    }
+})
+
+divSettingTransportation.addEventListener("click",()=>{
+    divFilterTransportation.classList.toggle("filters-none")
+})
+
+let listTransportation=[];
+let stt=0;
+async function displayList(url){
+    listTransportation=[];
+    let html="";
+    let dem=0;
+    let api=await dataApi(url);
+    api.Transportations.forEach(item=>{
+        if (dem<6){
+            html+=`
+                <div class="item scroll-display-none">
+                    <div class="img">
+                        <img src="${item.img}">
+                        <div class="top">${item.top}</div>
+                        <div class="wish"><i class="fa-solid fa-heart"></i></div>
+                        <div class="overlay"></div>
+                        <div class="category">
+                            <span class="eva">${item.point}</span>
+                            <span>${item.type}</span>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <div class="evalual">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <div class="title"><b>${item.title}</b></div>
+                        <div class="text">${item.text}</div>
+                        <div class="icon">
+                            <div><i class="fa-regular fa-user"></i></div>
+                            <div><i class="fa-solid fa-hotel"></i></div>
+                            <div><i class="fa-solid fa-wheelchair-move"></i></div>
+                            <div><i class="fa-solid fa-dog"></i></div>
+                            <div><i class="fa-solid fa-suitcase-rolling"></i></div>
+                        </div>
+                    </div>
+                    <div class="price">
+                        <p>${item.price}$</p>
+                        <div class="button-one">details</div>
+                    </div>
+                </div>
+            `;
+            dem++;
+        }else{
+            listTransportation.push(html);
+            html="";
+            dem=1;
+            html+=`
+                <div class="item scroll-display-none">
+                    <div class="img">
+                        <img src="${item.img}">
+                        <div class="top">${item.top}</div>
+                        <div class="wish"><i class="fa-solid fa-heart"></i></div>
+                        <div class="overlay"></div>
+                        <div class="category">
+                            <span class="eva">${item.point}</span>
+                            <span>${item.type}</span>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <div class="evalual">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <div class="title"><b>${item.title}</b></div>
+                        <div class="text">${item.text}</div>
+                        <div class="icon">
+                            <div><i class="fa-regular fa-user"></i></div>
+                            <div><i class="fa-solid fa-hotel"></i></div>
+                            <div><i class="fa-solid fa-wheelchair-move"></i></div>
+                            <div><i class="fa-solid fa-dog"></i></div>
+                            <div><i class="fa-solid fa-suitcase-rolling"></i></div>
+                        </div>
+                    </div>
+                    <div class="price">
+                        <p>${item.price}$</p>
+                        <div class="button-one">details</div>
+                    </div>
+                </div>
+            `;
+        };
+    });
+    if (html!=""){
+        listTransportation.push(html);
+    };
+    divDisplayList.innerHTML=listTransportation[stt];
+    divTransportationNumber.innerHTML=stt+1;
+    // ----scroll display----
+    const divItem=document.querySelectorAll(".scroll-display-none");
+
+    const observer=new IntersectionObserver(entries=>{
+        entries.forEach(item=>{
+            if (item.isIntersecting){
+                item.target.classList.add("scroll-display");
+                observer.unobserve(item.target);
+            }
+        });
+    },{
+        threshold:0.1
+    });
+
+    divItem.forEach(item=>{
+        observer.observe(item)
+    });
+};
+displayList(urlTransportation)
+
+
+let girdTransportation=[];
+async function displayGird(url){
+    girdTransportation=[];
+    let html="";
+    let dem=0;
+    let api=await dataApi(url);
+    api.Transportations.forEach(item=>{
+        if (dem<6){
+            html+=`
+                <div class="item scroll-display-none">
+                    <div class="img">
+                        <img src="${item.img}">
+                        <div class="top">${item.top}</div>
+                        <div class="overlay"></div>
+                        <div class="cate-price">
+                            <div class="category">
+                                <span class="eva">${item.point}</span>
+                                <span>${item.type}</span>
+                            </div>
+                            <div class="price">${item.price}$</div>
+                        </div>
+                    </div>
+                    <div class="title">
+                        <div class="text">
+                            <h2>${item.title}</h2>
+                            <div class="evalual">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="wish"><i class="fa-solid fa-heart"></i></div>
+                    </div>
+                </div>
+            `;
+            dem++;
+        }else{
+            girdTransportation.push(html);
+            html="";
+            dem=1;
+            html+=`
+                <div class="item scroll-display-none">
+                    <div class="img">
+                        <img src="${item.img}">
+                        <div class="top">${item.top}</div>
+                        <div class="overlay"></div>
+                        <div class="cate-price">
+                            <div class="category">
+                                <span class="eva">${item.point}</span>
+                                <span>${item.type}</span>
+                            </div>
+                            <div class="price">${item.price}$</div>
+                        </div>
+                    </div>
+                    <div class="title">
+                        <div class="text">
+                            <h2>${item.title}</h2>
+                            <div class="evalual">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="wish"><i class="fa-solid fa-heart"></i></div>
+                    </div>
+                </div>
+            `;
+        };
+    });
+    if (html!=""){
+        girdTransportation.push(html);
+    };
+    divDisplayGird.innerHTML=girdTransportation[stt];
+    divTransportationNumber.innerHTML=stt+1;
+    // ----scroll display----
+    const divItem=document.querySelectorAll(".scroll-display-none");
+
+    const observer=new IntersectionObserver(entries=>{
+        entries.forEach(item=>{
+            if (item.isIntersecting){
+                item.target.classList.add("scroll-display");
+                observer.unobserve(item.target);
+            }
+        });
+    },{
+        threshold:0.1
+    });
+
+    divItem.forEach(item=>{
+        observer.observe(item)
+    });
+};
+displayGird(urlTransportation);
+
+
+
+// ------map-----
+divButtonMapTransportation.addEventListener("click",()=>{
+    document.querySelector("#mapTransportation").classList.toggle("map-tour-none");
+})
+
+// -------thay display----
+document.querySelector("#girdTransportation").addEventListener("click",()=>{
+    divDisplayGird.style.display="flex";
+    divDisplayList.style.display="none";
+})
+document.querySelector("#listTransportation").addEventListener("click",()=>{
+    divDisplayGird.style.display="none";
+    divDisplayList.style.display="block";
+})
+
+// ------next && previous---
+
+divTransportationPre.addEventListener("click",()=>{
+    if(stt>0){
+        stt--;
+        displayGird(urlTransportation);
+        displayList(urlTransportation);
+    }
+});
+divTransportationNext.addEventListener("click",()=>{
+    if(stt<listTransportation.length-1){
+        stt++;
+        displayGird(urlTransportation);
+        displayList(urlTransportation);
+    }
+});
+
+// ------sort item----
+// divTourSort.addEventListener("change",()=>{
+//     stt=0;
+//     if (divTourSort.value=="price (↑)"){
+//         urlTour="https://api-project-js.vercel.app/api?sortBy=price&order=asc";
+//     }else if (divTourSort.value=="price (↓)"){
+//         urlTour="https://api-project-js.vercel.app/api?sortBy=price&order=desc";
+//     }else{
+//         urlTour="https://api-project-js.vercel.app/api";
+//     }
+//     displayGird(urlTour);
+//     displayList(urlTour);
+// })
+
+
+

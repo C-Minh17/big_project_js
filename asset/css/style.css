@@ -839,6 +839,32 @@ header{
     font-size: 20px;
 }
 
+/* ------login----- */
+/* --------------- */
 
+.login-home{
+    position: relative;
+    background-image:url("/asset/img/slide_home_2.jpg") ;
+    background-size: cover;
+    width:100%;
+    height:800px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.login-home .box-sign-in{
+    background-color: aquamarine;
+    padding:30px;
+}
+
+
+
+
+
+
+
+.login-home .box-sign-up{
+   display:none;
+}
 
 

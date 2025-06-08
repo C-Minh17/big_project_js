@@ -17,3 +17,16 @@ window.addEventListener("scroll",()=>{
         divMenu.classList.remove("box-menu");
     }
 })
+
+document.querySelector("#signUp").addEventListener("click",()=>{
+    document.querySelector(".box-sign-up").style.display="flex";
+    document.querySelector(".box-sign-in").style.display="none";
+})
+document.querySelector("#upSignIn").addEventListener("click",()=>{
+    document.querySelector(".box-sign-in").style.display="flex";
+    document.querySelector(".box-sign-up").style.display="none";
+})
+
+
+
+

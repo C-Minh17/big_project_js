@@ -61,7 +61,8 @@
     <div class="login-home">
         <div class="box-sign-in">
             <form action="#">
-                <img src="/asset/img/logo_sticky_2x.png">
+                <div class="logo"><img src="/asset/img/logo_sticky_2x.png"></div>
+                <hr>
                 <label>
                     UserName<br>
                     <input type="text" required placeholder="username">
@@ -71,24 +72,33 @@
                     <input type="text" required placeholder="password">
                 </label>
                 <div></div>
-                <button class="bt-one">sign in</button>
-                <button class="bt-two">sign up</button>
+                <button class="bt-one" id="signIn">sign in</button>
+                <div class="bt-two" id="signUp">sign up</div>
             </form>
         </div>
         <div class="box-sign-up">
             <form action="#">
-                <img src="/asset/img/logo_sticky_2x.png">
+                <div class="logo"><img src="/asset/img/logo_sticky_2x.png"></div>
+                <hr>
                 <label>
                     UserName<br>
                     <input type="text" required placeholder="username">
+                </label>
+                <label>
+                    Email<br>
+                    <input type="text" required placeholder="password">
+                </label>
+                <label>
+                    Phone<br>
+                    <input type="text" required placeholder="password">
                 </label>
                 <label>
                     Password<br>
                     <input type="text" required placeholder="password">
                 </label>
                 <div></div>
-                <button class="bt-one">sign in</button>
-                <button class="bt-two">sign up</button>
+                <button class="bt-one" id="upSignUp">sign up</button>
+                <div class="bt-two" id="upSignIn">sign in</div>
             </form>
         </div>
     </div>

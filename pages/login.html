@@ -19,14 +19,14 @@
                     <p>099999999999</p>
                 </div>
                 <div class="task">
-                    <div class="sign-in">
+                    <!-- <div class="sign-in">
                         <a href="#"><i class="fa-solid fa-right-to-bracket"></i></a>
                         <a href="#">sign in</a>
                     </div>
                     <div class="wishlist">
                         <a href="#"><i class="fa-solid fa-heart"></i></a>
                         <a href="#">Wishlist</a>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -72,7 +72,7 @@
                     <input type="text" required placeholder="password">
                 </label>
                 <div></div>
-                <button class="bt-one" id="signIn">sign in</button>
+                <div class="bt-one" id="signIn">sign in</div>
                 <div class="bt-two" id="signUp">sign up</div>
             </form>
         </div>
@@ -82,22 +82,22 @@
                 <hr>
                 <label>
                     UserName<br>
-                    <input type="text" required placeholder="username">
+                    <input id="signUpName" type="text" required placeholder="username">
                 </label>
                 <label>
                     Email<br>
-                    <input type="text" required placeholder="password">
+                    <input id="signUpEmail" type="text" required placeholder="password">
                 </label>
                 <label>
                     Phone<br>
-                    <input type="text" required placeholder="password">
+                    <input id="signUpPhone" type="text" required placeholder="password">
                 </label>
                 <label>
                     Password<br>
-                    <input type="text" required placeholder="password">
+                    <input id="signUpPass" type="text" required placeholder="password">
                 </label>
-                <div></div>
-                <button class="bt-one" id="upSignUp">sign up</button>
+                <div id="alertSignUp" style="color:red;font-size:13px;"></div>
+                <div class="bt-one" id="upSignUp">sign up</div>
                 <div class="bt-two" id="upSignIn">sign in</div>
             </form>
         </div>

@@ -25,6 +25,16 @@ header{
 .nav-bar .task{
     display:flex;
 }
+.nav-bar .task .sign-in-success{
+    display: none;
+    align-items: center;
+    font-size: 15px;
+}
+.nav-bar .task .sign-in-success a:nth-child(2){
+    margin-right:10px;
+    padding-right:10px;
+    border-right: 1px rgb(172, 167, 167) solid;
+}
 .nav-bar .task .sign-in{
     display: flex;
     align-items: center;

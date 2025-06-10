@@ -33,8 +33,13 @@ const upEmail=document.querySelector("#signUpEmail");
 const upPhone=document.querySelector("#signUpPhone");
 const upPass=document.querySelector("#signUpPass");
 const upAlert=document.querySelector("#alertSignUp");
+const inName=document.querySelector("#signInName");
+const inAlert=document.querySelector("#alertSignIn");
+const inPass=document.querySelector("#signInPass");
 
-let listAccount=[];
+
+
+let listAccount=[{userName: "admin", email: "admin@gmail.com", phone: "0999999999", password: "admin1234"}];
 class infoSignUp{
     constructor(name,email,phone,password){
         this.userName=name;
@@ -43,15 +48,24 @@ class infoSignUp{
         this.password=password;
     }
 };
-listAccount.push(new infoSignUp("admin","admin@gmail.com","0999999999","admin123"))
-listAccount.concat(JSON.parse(localStorage.getItem("listAccount")));
+if(JSON.parse(localStorage.getItem("listAccount"))!=null){
+    listAccount=listAccount.concat(JSON.parse(localStorage.getItem("listAccount")));
+};
 function ktraAccount(){
-    for (item of listAccount){
+    for (let item of listAccount){
         if (upName.value==item.userName || upEmail.value==item.email || upPhone.value==item.phone || upPass.value==item.password){
             return false
         }
     };
     return true
+};
+function ktraSignIn(){
+    for (let item of listAccount){
+        if (inName.value==item.userName && inPass.value==item.password){
+            return true
+        }
+    };
+    return false
 };
 function resetValueUp(){
     upName.value="";
@@ -64,8 +78,7 @@ document.querySelector("#upSignUp").addEventListener("click",()=>{
     if (upName.value=="" || upEmail.value=="" || upPhone.value=="" || upPass.value==""){
         upAlert.innerHTML="Vui lòng nhập đầy đủ thông tin yêu cầu"
     }else{
-        if(ktraAccount){
-            console.log(listAccount);
+        if(ktraAccount()){
             listAccount.push(new infoSignUp(upName.value,upEmail.value,upPhone.value,upPass.value));
             localStorage.listAccount=JSON.stringify(listAccount);
             upAlert.innerHTML="Đăng kí thành công";
@@ -76,3 +89,19 @@ document.querySelector("#upSignUp").addEventListener("click",()=>{
         
     }
 })
+
+document.querySelector("#signIn").addEventListener("click",()=>{
+    if(ktraSignIn){
+        localStorage.status=1;
+        localStorage.nameUser=inName.value;
+        location.href="/index.html"
+    }else{
+        inAlert.innerHTML="Tài khoản hoặc mật khẩu không chính xác !!"
+    }
+})
+
+
+
+
+
+

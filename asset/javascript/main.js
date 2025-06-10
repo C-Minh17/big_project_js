@@ -153,5 +153,14 @@ window.addEventListener("scroll",()=>{
 
 
 // -----------------
-
-
+if (localStorage.getItem("status")==1){
+    document.querySelector(".sign-in-success").style.display="flex";
+    document.querySelector(".sign-in").style.display="none";
+    document.querySelector("#nameSignIn").innerHTML=`Hi,${localStorage.getItem("nameUser")}`
+}
+document.querySelector("#logOut").addEventListener("click",()=>{
+    if(confirm("bạn chăc chắn muốn đăng xuất")){
+        localStorage.status=0;
+        alert("bạn đã đăng xuất thành công");
+    }
+})

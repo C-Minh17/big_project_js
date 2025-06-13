@@ -1,7 +1,7 @@
 import {divHeader} from "/asset/javascript/var.js"
 import {divNavBar} from "/asset/javascript/var.js"
 import {divMenu} from "/asset/javascript/var.js"
-import {divButtonMapHotel} from "/asset/javascript/var.js"
+import {divButtonMapTour} from "/asset/javascript/var.js"
 
 
 window.addEventListener("scroll",()=>{
@@ -16,7 +16,8 @@ window.addEventListener("scroll",()=>{
         divMenu.classList.remove("box-menu");
     }
 })
-s
-divButtonMapHotel.addEventListener("click",()=>{
-    document.querySelector("#mapHotel").classList.toggle("map-tour-none");
+
+// ------map-----
+divButtonMapTour.addEventListener("click",()=>{
+    document.querySelector("#mapTour").classList.toggle("map-tour-none");
 })

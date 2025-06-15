@@ -1,0 +1,13 @@
+@media (max-width:576px){
+    .categorys .box{
+        height:200px;
+    }
+    .categorys img{
+        height:100%;
+        width:100%;
+    }
+    .categorys h2{
+        left:0;
+    }
+
+}

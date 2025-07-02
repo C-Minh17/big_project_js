@@ -48,7 +48,14 @@ async function displayList(url){
         if (dem<6){
             html+=`
                 <div class="item scroll-display-none">
-                    <div class="img">
+                    <div data-id="${item.id}" 
+                        data-img="${item.img}"
+                        data-category="${item.type}"
+                        data-content="${item.content}"
+                        data-title="${item.title}"
+                        data-price="${item.price}"
+                        data-icon="${item.point}"
+                     class="img bt-item">
                         <img src="${item.img}">
                         <div class="top">${item.top}</div>
                         <div class="wish"><i class="fa-solid fa-heart"></i></div>
@@ -78,7 +85,14 @@ async function displayList(url){
                     </div>
                     <div class="price">
                         <p>${item.price}$</p>
-                        <div class="button-one">details</div>
+                        <div data-id="${item.id}"
+                            data-img="${item.img}"
+                            data-category="${item.type}"
+                            data-content="${item.content}"
+                            data-title="${item.title}"
+                            data-price="${item.price}"
+                            data-icon="${item.point}"
+                         class="button-one bt-item">details</div>
                     </div>
                 </div>
             `;
@@ -89,7 +103,14 @@ async function displayList(url){
             dem=1;
             html+=`
                 <div class="item scroll-display-none">
-                    <div class="img">
+                    <div data-id="${item.id}" 
+                        data-img="${item.img}"
+                        data-category="${item.type}"
+                        data-content="${item.content}"
+                        data-title="${item.title}"
+                        data-price="${item.price}"
+                        data-icon="${item.point}"
+                     class="img bt-item">
                         <img src="${item.img}">
                         <div class="top">${item.top}</div>
                         <div class="wish"><i class="fa-solid fa-heart"></i></div>
@@ -119,7 +140,14 @@ async function displayList(url){
                     </div>
                     <div class="price">
                         <p>${item.price}$</p>
-                        <div class="button-one">details</div>
+                        <div data-id="${item.id}"
+                            data-img="${item.img}"
+                            data-category="${item.type}"
+                            data-content="${item.content}"
+                            data-title="${item.title}"
+                            data-price="${item.price}"
+                            data-icon="${item.point}"
+                         class="button-one bt-item">details</div>
                     </div>
                 </div>
             `;
@@ -130,6 +158,22 @@ async function displayList(url){
     };
     divDisplayList.innerHTML=listTransportation[stt];
     divTransportationNumber.innerHTML=stt+1;
+    const buttonItem=document.querySelectorAll(".bt-item");
+    buttonItem.forEach(element=>{
+        element.addEventListener("click",()=>{
+            const data = {
+                id:element.dataset.id,
+                img:element.dataset.img,
+                category:element.dataset.category,
+                content:element.dataset.content,
+                title:element.dataset.title,
+                price:element.dataset.price,
+                icon:element.dataset.icon
+            };
+            localStorage.setItem("infoItem",JSON.stringify(data))
+            location.href="item.html"
+        })
+    })
     // ----scroll display----
     const divItem=document.querySelectorAll(".scroll-display-none");
 
@@ -161,7 +205,14 @@ async function displayGird(url){
         if (dem<6){
             html+=`
                 <div class="item scroll-display-none">
-                    <div class="img">
+                    <div data-id="${item.id}" 
+                        data-img="${item.img}"
+                        data-category="${item.type}"
+                        data-content="${item.content}"
+                        data-title="${item.title}"
+                        data-price="${item.price}"
+                        data-icon="${item.point}"
+                     class="img bt-item">
                         <img src="${item.img}">
                         <div class="top">${item.top}</div>
                         <div class="overlay"></div>
@@ -195,7 +246,14 @@ async function displayGird(url){
             dem=1;
             html+=`
                 <div class="item scroll-display-none">
-                    <div class="img">
+                    <div data-id="${item.id}" 
+                        data-img="${item.img}"
+                        data-category="${item.type}"
+                        data-content="${item.content}"
+                        data-title="${item.title}"
+                        data-price="${item.price}"
+                        data-icon="${item.point}"
+                     class="img bt-item">
                         <img src="${item.img}">
                         <div class="top">${item.top}</div>
                         <div class="overlay"></div>
@@ -229,6 +287,22 @@ async function displayGird(url){
     };
     divDisplayGird.innerHTML=girdTransportation[stt];
     divTransportationNumber.innerHTML=stt+1;
+    const buttonItem=document.querySelectorAll(".bt-item");
+    buttonItem.forEach(element=>{
+        element.addEventListener("click",()=>{
+            const data = {
+                id:element.dataset.id,
+                img:element.dataset.img,
+                category:element.dataset.category,
+                content:element.dataset.content,
+                title:element.dataset.title,
+                price:element.dataset.price,
+                icon:element.dataset.icon
+            };
+            localStorage.setItem("infoItem",JSON.stringify(data))
+            location.href="item.html"
+        })
+    })
     // ----scroll display----
     const divItem=document.querySelectorAll(".scroll-display-none");
 
@@ -283,6 +357,8 @@ divTransportationNext.addEventListener("click",()=>{
     }
 });
 
+
+// ----trạng thái ---
 if (localStorage.getItem("status")==1){
     document.querySelector(".sign-in-success").style.display="flex";
     document.querySelector(".sign-in").style.display="none";
@@ -308,5 +384,11 @@ document.querySelector("#logOut").addEventListener("click",()=>{
 //     displayList(urlTour);
 // })
 
-
+document.querySelector("header .extra .cart").addEventListener("click",()=>{
+    if (localStorage.getItem("status") == 1){
+        location.href="/pages/history.html"
+    }else{
+        alert("Vui lòng đăng nhập để xem lịch sử booking")
+    }
+})
 

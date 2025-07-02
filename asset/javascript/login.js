@@ -53,7 +53,7 @@ if(JSON.parse(localStorage.getItem("listAccount"))!=null){
 };
 function ktraAccount(){
     for (let item of listAccount){
-        if (upName.value==item.userName || upEmail.value==item.email || upPhone.value==item.phone || upPass.value==item.password){
+        if (upName.value==item.userName || upEmail.value==item.email || upPhone.value==item.phone ){
             return false
         }
     };
@@ -101,7 +101,13 @@ document.querySelector("#signIn").addEventListener("click",()=>{
 })
 
 
-
+document.querySelector("header .extra .cart").addEventListener("click",()=>{
+    if (localStorage.getItem("status") == 1){
+        location.href="/pages/history.html"
+    }else{
+        alert("Vui lòng đăng nhập để xem lịch sử booking")
+    }
+})
 
 
 

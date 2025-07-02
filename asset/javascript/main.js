@@ -42,7 +42,14 @@ async function innerTour(){
                 <div class="col-xl-4 box ">
                     <div class="box-tour">
                         <div class="top">${item.top}</div>
-                        <a href="#"><img src="${item.img}"></a>
+                        <a data-id="${item.id}" 
+                        data-img="${item.img}"
+                        data-category="${item.category}"
+                        data-content="${item.content}"
+                        data-title="${item.title}"
+                        data-price="${item.price}"
+                        data-icon="${item.icon}"
+                     class="bt-item"><img src="${item.img}"></a>
                         <div class="overlay"></div>
                         <div class="cate-price">
                             <div class="category">
@@ -70,6 +77,22 @@ async function innerTour(){
     });
     html=list[slTour]+list[slTour+1]+list[slTour+2];
     divBoxTour.innerHTML=html;
+    const buttonItem=document.querySelectorAll(".bt-item");
+    buttonItem.forEach(element=>{
+        element.addEventListener("click",()=>{
+            const data = {
+                id:element.dataset.id,
+                img:element.dataset.img,
+                category:element.dataset.category,
+                content:element.dataset.content,
+                title:element.dataset.title,
+                price:element.dataset.price,
+                icon:element.dataset.icon
+            };
+            localStorage.setItem("infoItem",JSON.stringify(data))
+            location.href="/pages/item.html"
+        })
+    })
 };
 innerTour();
 
@@ -98,7 +121,14 @@ async function innerHotel(){
                 <div class="col-xl-4 box ">
                     <div class="box-tour">
                         <div class="top">${item.top}</div>
-                        <a href="#"><img src="${item.img}"></a>
+                        <a data-id="${item.id}" 
+                        data-img="${item.img}"
+                        data-category="${item.type}"
+                        data-content="${item.content}"
+                        data-title="${item.title}"
+                        data-price="${item.price}"
+                        data-icon="${item.point}"
+                     class="bt-item"><img src="${item.img}"></a>
                         <div class="overlay"></div>
                         <div class="cate-price">
                             <div class="category">
@@ -126,6 +156,22 @@ async function innerHotel(){
     });
     html=list[slHotel]+list[slHotel+1]+list[slHotel+2];
     divBoxHotel.innerHTML=html;
+    const buttonItem=document.querySelectorAll(".bt-item");
+    buttonItem.forEach(element=>{
+        element.addEventListener("click",()=>{
+            const data = {
+                id:element.dataset.id,
+                img:element.dataset.img,
+                category:element.dataset.category,
+                content:element.dataset.content,
+                title:element.dataset.title,
+                price:element.dataset.price,
+                icon:element.dataset.icon
+            };
+            localStorage.setItem("infoItem",JSON.stringify(data))
+            location.href="/pages/item.html"
+        })
+    })
 };
 innerHotel();
 
@@ -162,5 +208,13 @@ document.querySelector("#logOut").addEventListener("click",()=>{
     if(confirm("bạn chăc chắn muốn đăng xuất")){
         localStorage.status=0;
         alert("bạn đã đăng xuất thành công");
+    }
+})
+
+document.querySelector("header .extra .cart").addEventListener("click",()=>{
+    if (localStorage.getItem("status") == 1){
+        location.href="/pages/history.html"
+    }else{
+        alert("Vui lòng đăng nhập để xem lịch sử booking")
     }
 })

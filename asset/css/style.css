@@ -1206,14 +1206,13 @@ header{
     height:500px;
     z-index: 1;
 }
-.item-home::before{
-    content: "";
+.item-home .item-home-img{
     position: absolute;
     background-image: url("/asset/img/tours/parallax_bg_1.jpg");
     background-size: cover;
     width:100%;
     height:100%;
-    filter:brightness(50%) contrast(120%);
+    filter:brightness(60%) contrast(120%);
 }
 .item-home .title{
     position: absolute;
@@ -1251,7 +1250,34 @@ header{
 }
 .info-item .box-info .info-detail{
     width: 68%;
+    display: flex;
 }
+.info-item .box-info .info-detail>p{
+    width: 15%;
+    font-size: 20px;
+    font-weight: 500;
+    border-right: 1px #222 solid;
+    padding:10px;
+}
+.info-item .box-info .info-detail .info-item{
+    flex:1;
+    padding:5px 20px;
+}
+.info-item .box-info .info-detail .info-item .title{
+    margin:0;
+}
+.info-item .box-info .info-detail .info-item h5{
+    margin-top:20px;
+}
+.info-item .box-info .info-detail .info-item i{
+    color:#FFC107;
+}
+.info-item .box-info .info-detail .info-item img{
+    width:100%;
+    height:auto;
+    margin:20px 0;
+}
+
 .info-item .box-info .pay-item{
     flex:1;
 }
@@ -1322,6 +1348,9 @@ header{
     font-size: 14px;
     font-weight: 500;
 }
+.info-item .box-info .pay-item .info-booking .info .displayTotalCost::after{
+    content: "$";
+}
 .info-item .box-info .pay-item .info-booking .info div{
     display: flex;
     justify-content: space-between;
@@ -1376,5 +1405,112 @@ header{
     margin-bottom: 20px;   
 }
 
+.info-item .info-pay{
+    display: none;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+}
+.info-item .info-pay .bt-back{
+    width: 100%;
+    padding:0 10px;
+    margin:20px 0;
+    font-size: 14px;
+    cursor: pointer;
+}
+.info-item .info-pay .bt-back:hover{
+    color:red;
+}
+.info-item .info-pay .qr-code{
+    text-align: center;
+}
+.info-item .info-pay .qr-code img{
+    width:60%;
+    height:auto;
+}
+.info-item .info-pay .bt-pay{
+    display: block;
+    width:70%;
+    padding:12px;
+    background-color: #008489;
+    text-align: center;
+    color:#fff;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 3px;
+    margin:30px 0;
+    cursor: pointer;
+}
+.info-item .info-pay .waiting-pay{
+    display: none;
+    width:70%;
+    padding:12px;
+    background-color: #008489;
+    text-align: center;
+    color:#fff;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 3px;
+    margin:30px 0;
+    cursor: pointer;
+}
+.info-item .info-pay .bt-pay:hover{
+    background-color: #333;
+}
+
+/* ---------history------ */
+
+.history-home{
+    position: relative;
+    width:100%;
+    height:500px;
+    z-index: 1;
+}
+.history-home .history-home-img{
+    position: absolute;
+    background-image: url("/asset/img/history-banner.jpg");
+    background-size: cover;
+    width:100%;
+    height:100%;
+    filter:brightness(60%) contrast(120%);
+}
+.history-home .title{
+    position: absolute;
+    z-index: 1;
+    text-align: center;
+    bottom:100px;
+    color: white;
+    width: 100%;
+}
+
+.history-home .title h1{
+    font-size: 40px;
+    font-weight: bold;
+}
+.history-home .title p{
+    font-size: 16px;
+}
+
+
+.history{
+    padding:50px;
+}
+.history h2{
+    text-align: center;
+    margin-bottom:60px;
+}
+
+.history .list-history ul{
+    display:flex;
+    text-align: center;
+}
+.history .list-history li{
+    list-style: none;
+    width:16.6%;
+}
+.history .header-history li{
+    font-weight: 500;
+    font-size: 18px;
+}
 
 

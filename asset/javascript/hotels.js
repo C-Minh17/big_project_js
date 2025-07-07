@@ -37,14 +37,51 @@ divSettingHotel.addEventListener("click",()=>{
     divFilterHotel.classList.toggle("filters-none")
 })   
 
+// ---lists touur--
+async function arrangeApi(url,i){
+    let listApiArrange=[]
+    const api=await dataApi(url)
+    const apiHotel=api.hotels
+    if (i == 1){
+        listApiArrange=apiHotel.slice().sort((a,b) => a.price - b.price)
+    }else if (i == 0){
+        listApiArrange=apiHotel.slice().sort((a,b) => b.price - a.price)
+    }else{
+        listApiArrange=apiHotel
+    }
+    return listApiArrange
+}
+
+let sortList=2
+document.addEventListener("DOMContentLoaded",async ()=>{
+    displayList(await arrangeApi(urlHotel,sortList))
+
+    displayGird(await arrangeApi(urlHotel,sortList));
+
+})
+
+// ------sort item----
+divHotelSort.addEventListener("change",async ()=>{
+    stt=0;
+    if (divHotelSort.value=="price (↑)"){
+        sortList=1;
+    }else if (divHotelSort.value=="price (↓)"){
+        sortList=0;
+    }else{
+        sortList=2;
+    }
+    displayList(await arrangeApi(urlHotel,sortList))
+    displayGird(await arrangeApi(urlHotel,sortList))
+})
+
+
 let listHotel=[];
 let stt=0;
-async function displayList(url){
+async function displayList(listApi){
     listHotel=[];
     let html="";
     let dem=0;
-    let api=await dataApi(url);
-    api.hotels.forEach(item=>{
+    listApi.forEach(item=>{
         if (dem<6){
             html+=`
                 <div class="item scroll-display-none">
@@ -192,16 +229,14 @@ async function displayList(url){
         observer.observe(item)
     });
 };
-displayList(urlHotel)
 
 
 let girdHotel=[];
-async function displayGird(url){
+async function displayGird(listApi){
     girdHotel=[];
     let html="";
     let dem=0;
-    let api=await dataApi(url);
-    api.hotels.forEach(item=>{
+    listApi.forEach(item=>{
         if (dem<6){
             html+=`
                 <div class="item scroll-display-none">
@@ -321,8 +356,6 @@ async function displayGird(url){
         observer.observe(item)
     });
 };
-displayGird(urlHotel);
-
 
 
 // ------map-----
@@ -342,18 +375,18 @@ document.querySelector("#listHotel").addEventListener("click",()=>{
 
 // ------next && previous---
 
-divHotelPre.addEventListener("click",()=>{
+divHotelPre.addEventListener("click",async ()=>{
     if(stt>0){
         stt--;
-        displayGird(urlHotel);
-        displayList(urlHotel);
+        displayGird(await arrangeApi(urlHotel,sortList));
+        displayList(await arrangeApi(urlHotel,sortList));
     }
 });
-divHotelNext.addEventListener("click",()=>{
+divHotelNext.addEventListener("click",async ()=>{
     if(stt<listHotel.length-1){
         stt++;
-        displayGird(urlHotel);
-        displayList(urlHotel);
+        displayGird(await arrangeApi(urlHotel,sortList));
+        displayList(await arrangeApi(urlHotel,sortList));
     }
 });
 
@@ -369,19 +402,6 @@ document.querySelector("#logOut").addEventListener("click",()=>{
         alert("bạn đã đăng xuất thành công");
     }
 })
-// ------sort item----
-// divTourSort.addEventListener("change",()=>{
-//     stt=0;
-//     if (divTourSort.value=="price (↑)"){
-//         urlTour="https://api-project-js.vercel.app/api?sortBy=price&order=asc";
-//     }else if (divTourSort.value=="price (↓)"){
-//         urlTour="https://api-project-js.vercel.app/api?sortBy=price&order=desc";
-//     }else{
-//         urlTour="https://api-project-js.vercel.app/api";
-//     }
-//     displayGird(urlTour);
-//     displayList(urlTour);
-// })
 
 document.querySelector("header .extra .cart").addEventListener("click",()=>{
     if (localStorage.getItem("status") == 1){

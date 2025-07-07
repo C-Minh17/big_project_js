@@ -37,14 +37,51 @@ divSettingTransportation.addEventListener("click",()=>{
     divFilterTransportation.classList.toggle("filters-none")
 })
 
+// ---lists touur--
+async function arrangeApi(url,i){
+    let listApiArrange=[]
+    const api=await dataApi(url)
+    const apiTransportation=api.Transportations
+    if (i == 1){
+        listApiArrange=apiTransportation.slice().sort((a,b) => a.price - b.price)
+    }else if (i == 0){
+        listApiArrange=apiTransportation.slice().sort((a,b) => b.price - a.price)
+    }else{
+        listApiArrange=apiTransportation
+    }
+    return listApiArrange
+}
+
+let sortList=2
+document.addEventListener("DOMContentLoaded",async ()=>{
+    displayList(await arrangeApi(urlTransportation,sortList))
+
+    displayGird(await arrangeApi(urlTransportation,sortList));
+
+})
+
+// ------sort item----
+divTransportationSort.addEventListener("change",async ()=>{
+    stt=0;
+    if (divTransportationSort.value=="price (↑)"){
+        sortList=1;
+    }else if (divTransportationSort.value=="price (↓)"){
+        sortList=0;
+    }else{
+        sortList=2;
+    }
+    displayList(await arrangeApi(urlTransportation,sortList))
+    displayGird(await arrangeApi(urlTransportation,sortList))
+})
+
+
 let listTransportation=[];
 let stt=0;
-async function displayList(url){
+async function displayList(listApi){
     listTransportation=[];
     let html="";
     let dem=0;
-    let api=await dataApi(url);
-    api.Transportations.forEach(item=>{
+    listApi.forEach(item=>{
         if (dem<6){
             html+=`
                 <div class="item scroll-display-none">
@@ -192,16 +229,14 @@ async function displayList(url){
         observer.observe(item)
     });
 };
-displayList(urlTransportation)
 
 
 let girdTransportation=[];
-async function displayGird(url){
+async function displayGird(listApi){
     girdTransportation=[];
     let html="";
     let dem=0;
-    let api=await dataApi(url);
-    api.Transportations.forEach(item=>{
+    listApi.forEach(item=>{
         if (dem<6){
             html+=`
                 <div class="item scroll-display-none">
@@ -321,7 +356,6 @@ async function displayGird(url){
         observer.observe(item)
     });
 };
-displayGird(urlTransportation);
 
 
 
@@ -342,18 +376,18 @@ document.querySelector("#listTransportation").addEventListener("click",()=>{
 
 // ------next && previous---
 
-divTransportationPre.addEventListener("click",()=>{
+divTransportationPre.addEventListener("click",async ()=>{
     if(stt>0){
         stt--;
-        displayGird(urlTransportation);
-        displayList(urlTransportation);
+        displayGird(await arrangeApi(urlTransportation,sortList));
+        displayList(await arrangeApi(urlTransportation,sortList));
     }
 });
-divTransportationNext.addEventListener("click",()=>{
+divTransportationNext.addEventListener("click",async ()=>{
     if(stt<listTransportation.length-1){
         stt++;
-        displayGird(urlTransportation);
-        displayList(urlTransportation);
+        displayGird(await arrangeApi(urlTransportation,sortList));
+        displayList(await arrangeApi(urlTransportation,sortList));
     }
 });
 
@@ -370,19 +404,6 @@ document.querySelector("#logOut").addEventListener("click",()=>{
         alert("bạn đã đăng xuất thành công");
     }
 })
-// ------sort item----
-// divTourSort.addEventListener("change",()=>{
-//     stt=0;
-//     if (divTourSort.value=="price (↑)"){
-//         urlTour="https://api-project-js.vercel.app/api?sortBy=price&order=asc";
-//     }else if (divTourSort.value=="price (↓)"){
-//         urlTour="https://api-project-js.vercel.app/api?sortBy=price&order=desc";
-//     }else{
-//         urlTour="https://api-project-js.vercel.app/api";
-//     }
-//     displayGird(urlTour);
-//     displayList(urlTour);
-// })
 
 document.querySelector("header .extra .cart").addEventListener("click",()=>{
     if (localStorage.getItem("status") == 1){

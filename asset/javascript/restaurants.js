@@ -37,14 +37,53 @@ divSettingRestaurant.addEventListener("click",()=>{
     divFilterRestaurant.classList.toggle("filters-none")
 })
 
+// ---lists touur--
+async function arrangeApi(url,i){
+    let listApiArrange=[]
+    const api=await dataApi(url)
+    const apiRestaurants=api.restaurants
+    if (i == 1){
+        listApiArrange=apiRestaurants.slice().sort((a,b) => a.price - b.price)
+    }else if (i == 0){
+        listApiArrange=apiRestaurants.slice().sort((a,b) => b.price - a.price)
+    }else{
+        listApiArrange=apiRestaurants
+    }
+    return listApiArrange
+}
+
+let sortList=2
+document.addEventListener("DOMContentLoaded",async ()=>{
+    displayList(await arrangeApi(urlRestaurant,sortList))
+
+    displayGird(await arrangeApi(urlRestaurant,sortList));
+
+})
+
+// ------sort item----
+divRestaurantSort.addEventListener("change",async ()=>{
+    stt=0;
+    if (divRestaurantSort.value=="price (↑)"){
+        sortList=1;
+    }else if (divRestaurantSort.value=="price (↓)"){
+        sortList=0;
+    }else{
+        sortList=2;
+    }
+    displayList(await arrangeApi(urlRestaurant,sortList))
+    displayGird(await arrangeApi(urlRestaurant,sortList))
+})
+
+
+
+
 let listRestaurant=[];
 let stt=0;
-async function displayList(url){
+async function displayList(listApi){
     listRestaurant=[];
     let html="";
     let dem=0;
-    let api=await dataApi(url);
-    api.restaurants.forEach(item=>{
+    listApi.forEach(item=>{
         if (dem<6){
             html+=`
                 <div class="item scroll-display-none">
@@ -190,16 +229,14 @@ async function displayList(url){
     });
 
 };
-displayList(urlRestaurant)
 
 
 let girdRestaurant=[];
-async function displayGird(url){
+async function displayGird(listApi){
     girdRestaurant=[];
     let html="";
     let dem=0;
-    let api=await dataApi(url);
-    api.restaurants.forEach(item=>{
+    listApi.forEach(item=>{
         if (dem<6){
             html+=`
                 <div class="item scroll-display-none">
@@ -319,8 +356,6 @@ async function displayGird(url){
         observer.observe(item)
     });
 };
-displayGird(urlRestaurant);
-
 
 
 // ------map-----
@@ -340,18 +375,18 @@ document.querySelector("#listRestaurant").addEventListener("click",()=>{
 
 // ------next && previous---
 
-divRestaurantPre.addEventListener("click",()=>{
+divRestaurantPre.addEventListener("click",async ()=>{
     if(stt>0){
         stt--;
-        displayGird(urlRestaurant);
-        displayList(urlRestaurant);
+        displayGird(await arrangeApi(urlRestaurant,sortList));
+        displayList(await arrangeApi(urlRestaurant,sortList));
     }
 });
-divRestaurantNext.addEventListener("click",()=>{
+divRestaurantNext.addEventListener("click",async ()=>{
     if(stt<listRestaurant.length-1){
         stt++;
-        displayGird(urlRestaurant);
-        displayList(urlRestaurant);
+        displayGird(await arrangeApi(urlRestaurant,sortList));
+        displayList(await arrangeApi(urlRestaurant,sortList));
     }
 });
 
@@ -366,19 +401,6 @@ document.querySelector("#logOut").addEventListener("click",()=>{
         alert("bạn đã đăng xuất thành công");
     }
 })
-// ------sort item----
-// divTourSort.addEventListener("change",()=>{
-//     stt=0;
-//     if (divTourSort.value=="price (↑)"){
-//         urlTour="https://api-project-js.vercel.app/api?sortBy=price&order=asc";
-//     }else if (divTourSort.value=="price (↓)"){
-//         urlTour="https://api-project-js.vercel.app/api?sortBy=price&order=desc";
-//     }else{
-//         urlTour="https://api-project-js.vercel.app/api";
-//     }
-//     displayGird(urlTour);
-//     displayList(urlTour);
-// })
 
 document.querySelector("header .extra .cart").addEventListener("click",()=>{
     if (localStorage.getItem("status") == 1){

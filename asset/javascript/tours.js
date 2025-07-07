@@ -38,26 +38,50 @@ divSettingTour.addEventListener("click",()=>{
 })
 
 // ---lists touur--
-// async function arrangeTour(url,i){
-//     let listTourArrange=[]
-//     const api=await dataApi(url)
-//     if (i == 1){
-//         api.tours
-//     }
+async function arrangeApi(url,i){
+    let listApiArrange=[]
+    const api=await dataApi(url)
+    const apiTour=api.tours
+    if (i == 1){
+        listApiArrange=apiTour.slice().sort((a,b) => a.price - b.price)
+    }else if (i == 0){
+        listApiArrange=apiTour.slice().sort((a,b) => b.price - a.price)
+    }else{
+        listApiArrange=apiTour
+    }
+    return listApiArrange
+}
 
-// }
+let sortList=2
+document.addEventListener("DOMContentLoaded",async ()=>{
+    displayList(await arrangeApi(urlTour,sortList))
 
+    displayGird(await arrangeApi(urlTour,sortList));
 
+})
+
+// ------sort item----
+divTourSort.addEventListener("change",async ()=>{
+    stt=0;
+    if (divTourSort.value=="tang"){
+        sortList=1;
+    }else if (divTourSort.value=="giam"){
+        sortList=0;
+    }else{
+        sortList=2;
+    }
+    displayList(await arrangeApi(urlTour,sortList))
+    displayGird(await arrangeApi(urlTour,sortList))
+})
 
 
 let listTour=[];
 let stt=0;
-async function displayList(url){
+async function displayList(listApi){
     listTour=[];
     let html="";
     let dem=0;
-    let api=await dataApi(url);
-    api.tours.forEach(item=>{
+    listApi.forEach(item=>{
         if (dem<6){
             html+=`
                 <div class="item scroll-display-none">
@@ -208,16 +232,13 @@ async function displayList(url){
     });
 
 };
-displayList(urlTour)
-
 
 let girdTour=[];
-async function displayGird(url){
+async function displayGird(listApi){
     girdTour=[];
     let html="";
     let dem=0;
-    let api=await dataApi(url);
-    api.tours.forEach(item=>{
+    listApi.forEach(item=>{
         if (dem<6){
             html+=`
                 <div class="item scroll-display-none">
@@ -339,8 +360,6 @@ async function displayGird(url){
         observer.observe(item)
     });
 };
-displayGird(urlTour);
-
 
 
 // ------map-----
@@ -360,18 +379,18 @@ document.querySelector("#listTour").addEventListener("click",()=>{
 
 // ------next && previous---
 
-divTourPre.addEventListener("click",()=>{
+divTourPre.addEventListener("click",async ()=>{
     if(stt>0){
         stt--;
-        displayGird(urlTour);
-        displayList(urlTour);
+        displayGird(await arrangeApi(urlTour,sortList));
+        displayList(await arrangeApi(urlTour,sortList));
     }
 });
-divTourNext.addEventListener("click",()=>{
+divTourNext.addEventListener("click",async ()=>{
     if(stt<listTour.length-1){
         stt++;
-        displayGird(urlTour);
-        displayList(urlTour);
+        displayGird(await arrangeApi(urlTour,sortList));
+        displayList(await arrangeApi(urlTour,sortList));
     }
 });
 
@@ -386,19 +405,7 @@ document.querySelector("#logOut").addEventListener("click",()=>{
         alert("bạn đã đăng xuất thành công");
     }
 })
-// ------sort item----
-// divTourSort.addEventListener("change",()=>{
-//     stt=0;
-//     if (divTourSort.value=="price (↑)"){
-//         urlTour="https://api-project-js.vercel.app/api?sortBy=price&order=asc";
-//     }else if (divTourSort.value=="price (↓)"){
-//         urlTour="https://api-project-js.vercel.app/api?sortBy=price&order=desc";
-//     }else{
-//         urlTour="https://api-project-js.vercel.app/api";
-//     }
-//     displayGird(urlTour);
-//     displayList(urlTour);
-// })
+
 
 document.querySelector("header .extra .cart").addEventListener("click",()=>{
     if (localStorage.getItem("status") == 1){

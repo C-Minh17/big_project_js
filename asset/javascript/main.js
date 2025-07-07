@@ -31,6 +31,12 @@ window.addEventListener("scroll",()=>{
     }
 })
 
+// ---auto next home--
+const autoNext=document.querySelector(".visually-hidden-next")
+setInterval(()=>{
+    autoNext.click()
+},3000)
+
 // -----top Tour---
 let slTour=0;
 async function innerTour(){
@@ -190,7 +196,7 @@ divNextHotel.addEventListener("click",()=>{
 // ---------
 
 window.addEventListener("scroll",()=>{
-    let value=window.scrollY<3500;
+    let value=window.scrollY<3400;
     if (value==true){
         divInfoWeb.classList.remove("infoNone");
     }else{

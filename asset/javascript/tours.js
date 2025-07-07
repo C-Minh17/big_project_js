@@ -37,6 +37,19 @@ divSettingTour.addEventListener("click",()=>{
     divFilterTour.classList.toggle("filters-none")
 })
 
+// ---lists touur--
+// async function arrangeTour(url,i){
+//     let listTourArrange=[]
+//     const api=await dataApi(url)
+//     if (i == 1){
+//         api.tours
+//     }
+
+// }
+
+
+
+
 let listTour=[];
 let stt=0;
 async function displayList(url){
@@ -393,5 +406,5 @@ document.querySelector("header .extra .cart").addEventListener("click",()=>{
     }else{
         alert("Vui lòng đăng nhập để xem lịch sử booking")
     }
-})
+}) 
 

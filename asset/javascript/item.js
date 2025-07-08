@@ -58,7 +58,7 @@ boxItem.innerHTML=`
     <div class="img-item"><img src="${dataItem.img}"></div>
 `
 boxHomeTitle.innerHTML=`
-    <h1>${dataItem.title} TOUR</h1>
+    <h1>${dataItem.title} </h1>
     <p><i class="${dataItem.icon}"></i> ${dataItem.category}</p>
 `
 
@@ -109,10 +109,21 @@ bookNow.addEventListener("click",()=>{
     }    
 })
 payNow.addEventListener("click",()=>{
+    const dateVN = new Date().toLocaleDateString("vi-VN", {
+        timeZone: "Asia/Ho_Chi_Minh"
+    });
+    const timeVN = new Date().toLocaleTimeString("vi-VN", {
+        timeZone: "Asia/Ho_Chi_Minh",
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false // 24 giờ, đặt true nếu muốn 12 giờ
+    });
     let item={
         id:dataItem.id,
         time:bookTime.value,
         date:bookDate.value,
+        dateBook:dateVN,
+        timeBook:timeVN,
         adults:adults.value,
         children:children.value,
         name:localStorage.getItem("nameUser"),

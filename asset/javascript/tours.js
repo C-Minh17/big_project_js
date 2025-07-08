@@ -16,6 +16,8 @@ import {divTourSort} from "/asset/javascript/var.js"
 
 
 import {dataApi} from "/asset/javascript/fetchApi.js"
+import {wishUI} from "/asset/javascript/wishlist.js"
+
 
 let urlTour="https://project-api-ptit.vercel.app/api";
 
@@ -95,7 +97,15 @@ async function displayList(listApi){
                      class="img bt-item">
                         <img src="${item.img}">
                         <div class="top">${item.top}</div>
-                        <div class="wish"><i class="fa-solid fa-heart"></i></div>
+                        <div class="wish"
+                            data-id="${item.id}" 
+                            data-img="${item.img}"
+                            data-category="${item.category}"
+                            data-content="${item.content}"
+                            data-title="${item.title}"
+                            data-price="${item.price}"
+                            data-icon="${item.icon}"
+                        ><i class="fa-solid fa-heart"></i></div>
                         <div class="overlay"></div>
                         <div class="category">
                             <i class="${item.icon}"></i>
@@ -151,7 +161,15 @@ async function displayList(listApi){
                      class="img bt-item">
                         <img src="${item.img}">
                         <div class="top">${item.top}</div>
-                        <div class="wish"><i class="fa-solid fa-heart"></i></div>
+                        <div class="wish"
+                            data-id="${item.id}" 
+                            data-img="${item.img}"
+                            data-category="${item.category}"
+                            data-content="${item.content}"
+                            data-title="${item.title}"
+                            data-price="${item.price}"
+                            data-icon="${item.icon}"
+                        ><i class="fa-solid fa-heart"></i></div>
                         <div class="overlay"></div>
                         <div class="category">
                             <i class="${item.icon}"></i>
@@ -213,6 +231,48 @@ async function displayList(listApi){
             location.href="item.html"
         })
     })
+    const buttonWish=document.querySelectorAll(".wish");
+    buttonWish.forEach(element=>{
+        element.addEventListener("click",()=>{
+            if(localStorage.getItem("status") == 0){
+                alert("Vui lòng đăng nhập để tiếp tục")
+                return
+            }
+            const data = {
+                id:element.dataset.id,
+                img:element.dataset.img,
+                category:element.dataset.category,
+                content:element.dataset.content,
+                title:element.dataset.title,
+                price:element.dataset.price,
+                icon:element.dataset.icon,
+                name:localStorage.getItem("nameUser")
+            };
+            let listLocalWish=JSON.parse(localStorage.getItem("AllListWish")) 
+            console.log("....",listLocalWish)
+            if (listLocalWish){
+                let k=0
+                listLocalWish.forEach(item => {
+                    if (item.id==data.id && item.name==data.name){
+                        k=1
+                    }
+                });
+                if(k==1){
+                    alert("Bạn đã thêm vào Wishlist rồi")
+                    return
+                }
+                listLocalWish.push(data)
+                localStorage.setItem("AllListWish",JSON.stringify(listLocalWish))
+                alert(`Bạn đã thêm ${data.title} vào Wishlist`)
+            }else{
+                listLocalWish=[]
+                listLocalWish.push(data)
+                localStorage.setItem("AllListWish",JSON.stringify(listLocalWish))
+                alert(`Bạn đã thêm ${data.title} vào Wishlist`)
+            }
+            wishUI()
+        })
+    })
     // ----scroll display----
     const divItem=document.querySelectorAll(".scroll-display-none");
 
@@ -272,7 +332,15 @@ async function displayGird(listApi){
                                 <i class="fa-solid fa-star"></i>
                             </div>
                         </div>
-                        <div class="wish"><i class="fa-solid fa-heart"></i></div>
+                        <div class="wish"
+                            data-id="${item.id}" 
+                            data-img="${item.img}"
+                            data-category="${item.category}"
+                            data-content="${item.content}"
+                            data-title="${item.title}"
+                            data-price="${item.price}"
+                            data-icon="${item.icon}"
+                        ><i class="fa-solid fa-heart"></i></div>
                     </div>
                 </div>
             `;
@@ -314,7 +382,15 @@ async function displayGird(listApi){
                                 <i class="fa-solid fa-star"></i>
                             </div>
                         </div>
-                        <div class="wish"><i class="fa-solid fa-heart"></i></div>
+                        <div class="wish"
+                            data-id="${item.id}" 
+                            data-img="${item.img}"
+                            data-category="${item.category}"
+                            data-content="${item.content}"
+                            data-title="${item.title}"
+                            data-price="${item.price}"
+                            data-icon="${item.icon}"
+                        ><i class="fa-solid fa-heart"></i></div>
                     </div>
                 </div>
             `;
@@ -340,6 +416,48 @@ async function displayGird(listApi){
             };
             localStorage.setItem("infoItem",JSON.stringify(data))
             location.href="item.html"
+        })
+    })
+    const buttonWish=document.querySelectorAll(".wish");
+    buttonWish.forEach(element=>{
+        element.addEventListener("click",()=>{
+            if(localStorage.getItem("status") == 0){
+                alert("Vui lòng đăng nhập để tiếp tục")
+                return
+            }
+            const data = {
+                id:element.dataset.id,
+                img:element.dataset.img,
+                category:element.dataset.category,
+                content:element.dataset.content,
+                title:element.dataset.title,
+                price:element.dataset.price,
+                icon:element.dataset.icon,
+                name:localStorage.getItem("nameUser")
+            };
+            let listLocalWish=JSON.parse(localStorage.getItem("AllListWish")) 
+            console.log("....",listLocalWish)
+            if (listLocalWish){
+                let k=0
+                listLocalWish.forEach(item => {
+                    if (item.id==data.id && item.name==data.name){
+                        k=1
+                    }
+                });
+                if(k==1){
+                    alert("Bạn đã thêm vào Wishlist rồi")
+                    return
+                }
+                listLocalWish.push(data)
+                localStorage.setItem("AllListWish",JSON.stringify(listLocalWish))
+                alert(`Bạn đã thêm ${data.title} vào Wishlist`)
+            }else{
+                listLocalWish=[]
+                listLocalWish.push(data)
+                localStorage.setItem("AllListWish",JSON.stringify(listLocalWish))
+                alert(`Bạn đã thêm ${data.title} vào Wishlist`)
+            }
+            wishUI()
         })
     })
     // ----scroll display----
@@ -394,6 +512,8 @@ divTourNext.addEventListener("click",async ()=>{
     }
 });
 
+
+// ---trạng thái---
 if (localStorage.getItem("status")==1){
     document.querySelector(".sign-in-success").style.display="flex";
     document.querySelector(".sign-in").style.display="none";

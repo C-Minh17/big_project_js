@@ -48,6 +48,10 @@ list.forEach(element => {
                 <li>${element.adults}</li>
                 <li>${element.children}</li>
                 <li>${element.totalCost}$</li>
+                <li>
+                    <p>${element.dateBook}</p>
+                    <p>${element.timeBook}</p>
+                </li>
                 <li style="color:green">Đã thanh toán</li>
             </ul>
         `

@@ -28,7 +28,7 @@
                         <a href="/pages/login.html"><i class="fa-solid fa-right-to-bracket"></i></a>
                         <a href="/pages/login.html">sign in</a>
                     </div>
-                    <div class="wishlist">
+                    <div class="wishlist" id="wishListAll">
                         <a href="#"><i class="fa-solid fa-heart"></i></a>
                         <a href="#">Wishlist</a>
                     </div>
@@ -64,6 +64,16 @@
 <!-- ------------ -->
     <a href="#" class="back-top"><i class="fa-solid fa-angle-up"></i></a>
 
+<!-- ------show wishlist---- -->
+    <div id="overlay" class="overlay-wishlist"></div>
+    <div class="popup-wish">
+        <span class="close-wish" id="closeWishList"><i class="fa-solid fa-xmark"></i></span>
+        <h2>WishList</h2>
+        <div class="popup-wish-list" id="popupWish">
+            <!-- //////// -->
+             Không có wishlist nào !!
+        </div>
+    </div>
 
 <!-- ------home-------- -->
     <div class="transportation-home">
@@ -303,5 +313,6 @@
 
     <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
     <script type="module" src="/asset/javascript/transportations.js"></script>
+    <script type="module" src="/asset/javascript/wishlist.js"></script>
 </body>
 </html>

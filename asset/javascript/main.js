@@ -16,6 +16,8 @@ let urlMain="https://project-api-ptit.vercel.app/api"
 
 // -----import function-----
 import {dataApi} from "/asset/javascript/fetchApi.js"
+import {wishUI} from "/asset/javascript/wishlist.js"
+
 
 // -------------/
 window.addEventListener("scroll",()=>{
@@ -36,6 +38,7 @@ const autoNext=document.querySelector(".visually-hidden-next")
 setInterval(()=>{
     autoNext.click()
 },3000)
+
 
 // -----top Tour---
 let slTour=0;
@@ -75,7 +78,15 @@ async function innerTour(){
                                     <i class="fa-solid fa-star"></i>
                                 </div>
                             </div>
-                            <div class="wish"><i class="fa-solid fa-heart"></i></div>
+                            <div class="wish bt-wish"
+                                data-id="${item.id}" 
+                                data-img="${item.img}"
+                                data-category="${item.category}"
+                                data-content="${item.content}"
+                                data-title="${item.title}"
+                                data-price="${item.price}"
+                                data-icon="${item.icon}"
+                            ><i class="fa-solid fa-heart"></i></div>
                         </div>
                     </div>
                 </div>
@@ -84,6 +95,48 @@ async function innerTour(){
     html=list[slTour]+list[slTour+1]+list[slTour+2];
     divBoxTour.innerHTML=html;
     const buttonItem=document.querySelectorAll(".bt-item");
+    const buttonWish=document.querySelectorAll(".bt-wish");
+    buttonWish.forEach(element=>{
+        element.addEventListener("click",()=>{
+            if(localStorage.getItem("status") == 0){
+                alert("Vui lòng đăng nhập để tiếp tục")
+                return
+            }
+            const data = {
+                id:element.dataset.id,
+                img:element.dataset.img,
+                category:element.dataset.category,
+                content:element.dataset.content,
+                title:element.dataset.title,
+                price:element.dataset.price,
+                icon:element.dataset.icon,
+                name:localStorage.getItem("nameUser")
+            };
+            let listLocalWish=JSON.parse(localStorage.getItem("AllListWish")) 
+            console.log("....",listLocalWish)
+            if (listLocalWish){
+                let k=0
+                listLocalWish.forEach(item => {
+                    if (item.id==data.id && item.name==data.name){
+                        k=1
+                    }
+                });
+                if(k==1){
+                    alert("Bạn đã thêm vào Wishlist rồi")
+                    return
+                }
+                listLocalWish.push(data)
+                localStorage.setItem("AllListWish",JSON.stringify(listLocalWish))
+                alert(`Bạn đã thêm ${data.title} vào Wishlist`)
+            }else{
+                listLocalWish=[]
+                listLocalWish.push(data)
+                localStorage.setItem("AllListWish",JSON.stringify(listLocalWish))
+                alert(`Bạn đã thêm ${data.title} vào Wishlist`)
+            }
+            wishUI()
+        })
+    })
     buttonItem.forEach(element=>{
         element.addEventListener("click",()=>{
             const data = {
@@ -154,7 +207,15 @@ async function innerHotel(){
                                     <i class="fa-solid fa-star"></i>
                                 </div>
                             </div>
-                            <div class="wish"><i class="fa-solid fa-heart"></i></div>
+                            <div class="wish bt-wish"
+                                data-id="${item.id}" 
+                                data-img="${item.img}"
+                                data-category="${item.type}"
+                                data-content="${item.content}"
+                                data-title="${item.title}"
+                                data-price="${item.price}"
+                                data-icon="${item.point}"
+                            ><i class="fa-solid fa-heart"></i></div>
                         </div>
                     </div>
                 </div>
@@ -176,6 +237,48 @@ async function innerHotel(){
             };
             localStorage.setItem("infoItem",JSON.stringify(data))
             location.href="/pages/item.html"
+        })
+    })
+    const buttonWish=document.querySelectorAll(".bt-wish");
+    buttonWish.forEach(element=>{
+        element.addEventListener("click",()=>{
+            if(localStorage.getItem("status") == 0){
+                alert("Vui lòng đăng nhập để tiếp tục")
+                return
+            }
+            const data = {
+                id:element.dataset.id,
+                img:element.dataset.img,
+                category:element.dataset.category,
+                content:element.dataset.content,
+                title:element.dataset.title,
+                price:element.dataset.price,
+                icon:element.dataset.icon,
+                name:localStorage.getItem("nameUser")
+            };
+            let listLocalWish=JSON.parse(localStorage.getItem("AllListWish")) 
+            console.log("....",listLocalWish)
+            if (listLocalWish){
+                let k=0
+                listLocalWish.forEach(item => {
+                    if (item.id==data.id && item.name==data.name){
+                        k=1
+                    }
+                });
+                if(k==1){
+                    alert("Bạn đã thêm vào Wishlist rồi")
+                    return
+                }
+                listLocalWish.push(data)
+                localStorage.setItem("AllListWish",JSON.stringify(listLocalWish))
+                alert(`Bạn đã thêm ${data.title} vào Wishlist`)
+            }else{
+                listLocalWish=[]
+                listLocalWish.push(data)
+                localStorage.setItem("AllListWish",JSON.stringify(listLocalWish))
+                alert(`Bạn đã thêm ${data.title} vào Wishlist`)
+            }
+            wishUI()
         })
     })
 };

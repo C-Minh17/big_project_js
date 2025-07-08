@@ -155,6 +155,96 @@ header{
     color:#565a5c;
 }
 
+/* ----wish list--- */
+.overlay-wishlist {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* mờ đen 40% */
+    z-index: 100;
+}
+.popup-wish{
+    display: none;
+    position: relative;
+    width:500px;
+    height:auto;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 101;
+    background-color: #fff;
+    box-shadow: 5px 5px 20px rgba(0,0,0,0.5);
+    padding:20px;
+}
+.overlay-wishlist.hidden-overlay{
+    display:block
+}
+.popup-wish.hidden-popup{
+    display:block
+}
+.popup-wish h2{
+    text-align: center;
+    margin-bottom: 20px;
+}
+.close-wish{
+    position: absolute;
+    top:0;
+    right:5px;
+}
+.popup-element-wish{
+    display:flex;
+    width: 100%;
+    margin-bottom: 15px;
+}
+.popup-wish-list{
+    max-height: 400px;
+    overflow: auto;
+}
+.popup-wish-list .box-wish{
+    width: 90%;
+    display:flex;
+    align-items: center;
+    cursor: pointer;
+}
+.popup-wish-list .img{
+    width:20%;
+    height:50px;
+    margin-right: 10px;
+}
+.popup-wish-list img{
+    width:100%;
+    height:100%;
+    background-size: cover;
+}
+.popup-wish-list .title {
+    width: 57%;
+}
+.popup-wish-list .title h3{
+    margin:0;
+    font-size: 22px;
+}
+.popup-wish-list .price {
+    flex: 1;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 400;
+}
+
+.popup-wish-list .delete-wish{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.popup-wish-list .delete-wish:hover i{
+    color:red;
+}
+
+
 /* ------slide-home----- */
 .carousel .carousel-inner .d-block{
     height:650px;
@@ -811,7 +901,7 @@ header{
 .transportation-home::before{
     content: "";
     position: absolute;
-    background-image: url("/asset/img/transportations/transfer_top.jpg");
+    background-image: url("/asset/img/sanbay.jpg");
     background-size: cover;
     width:100%;
     height:100%;

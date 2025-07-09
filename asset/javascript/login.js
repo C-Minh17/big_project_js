@@ -91,7 +91,7 @@ document.querySelector("#upSignUp").addEventListener("click",()=>{
 })
 
 document.querySelector("#signIn").addEventListener("click",()=>{
-    if(ktraSignIn){
+    if(ktraSignIn()){
         localStorage.status=1;
         localStorage.nameUser=inName.value;
         location.href="/index.html"

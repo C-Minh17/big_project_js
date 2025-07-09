@@ -86,7 +86,7 @@ async function displayList(listApi){
     listApi.forEach(item=>{
         if (dem<6){
             html+=`
-                <div class="item scroll-display-none">
+                <div class="item ">
                     <div data-id="${item.id}" 
                         data-img="${item.img}"
                         data-category="${item.type}"
@@ -149,7 +149,7 @@ async function displayList(listApi){
             html="";
             dem=1;
             html+=`
-                <div class="item scroll-display-none">
+                <div class="item ">
                     <div data-id="${item.id}" 
                         data-img="${item.img}"
                         data-category="${item.type}"
@@ -271,23 +271,6 @@ async function displayList(listApi){
             wishUI()
         })
     })
-    // ----scroll display----
-    const divItem=document.querySelectorAll(".scroll-display-none");
-
-    const observer=new IntersectionObserver(entries=>{
-        entries.forEach(item=>{
-            if (item.isIntersecting){
-                item.target.classList.add("scroll-display");
-                observer.unobserve(item.target);
-            }
-        });
-    },{
-        threshold:0.1
-    });
-
-    divItem.forEach(item=>{
-        observer.observe(item)
-    });
 };
 
 
@@ -299,7 +282,7 @@ async function displayGird(listApi){
     listApi.forEach(item=>{
         if (dem<6){
             html+=`
-                <div class="item scroll-display-none">
+                <div class="item ">
                     <div data-id="${item.id}" 
                         data-img="${item.img}"
                         data-category="${item.type}"
@@ -348,7 +331,7 @@ async function displayGird(listApi){
             html="";
             dem=1;
             html+=`
-                <div class="item scroll-display-none">
+                <div class="item ">
                     <div data-id="${item.id}" 
                         data-img="${item.img}"
                         data-category="${item.type}"
@@ -456,23 +439,7 @@ async function displayGird(listApi){
             wishUI()
         })
     })
-    // ----scroll display----
-    const divItem=document.querySelectorAll(".scroll-display-none");
-
-    const observer=new IntersectionObserver(entries=>{
-        entries.forEach(item=>{
-            if (item.isIntersecting){
-                item.target.classList.add("scroll-display");
-                observer.unobserve(item.target);
-            }
-        });
-    },{
-        threshold:0.1
-    });
-
-    divItem.forEach(item=>{
-        observer.observe(item)
-    });
+    
 };
 
 

@@ -42,7 +42,6 @@ const boxHomeImg=document.querySelector(".item-home-img");
 
 const dataItem=JSON.parse(localStorage.getItem("infoItem"))
 
-
 boxItem.innerHTML=`
     <h3 class="title">${dataItem.title}</h3>
     <div class="category">${dataItem.category}</div>
@@ -147,6 +146,107 @@ document.querySelector(".bt-back").addEventListener("click",()=>{
     document.querySelector(".info-booking").style.display="block"
     document.querySelector(".info-pay").style.display="none"
 })
+
+
+const commentReview=document.querySelector("#commentReview")
+const btReview=document.querySelector("#btReview")
+
+
+let dataReview=JSON.parse(localStorage.getItem("dataReview")) || []
+btReview.addEventListener("click",()=>{
+    if (localStorage.getItem("status") == 0){
+        alert("Vui lòng đăng nhập để đánh giá")
+        return
+    }
+    if (commentReview.value == ""){
+        return
+    }
+    const dateVN = new Date().toLocaleDateString("vi-VN", {
+        timeZone: "Asia/Ho_Chi_Minh"
+    });
+    const data={
+        comment:commentReview.value,
+        date:dateVN,
+        name:localStorage.getItem("nameUser"),
+        maDichVu:dataItem.id
+    }
+    dataReview.push(data)
+    localStorage.setItem("dataReview",JSON.stringify(dataReview))
+    reviewUI()
+    commentReview.value=""
+})
+const displayReview=document.querySelector("#displayReview")
+function reviewUI(){
+    dataReview=JSON.parse(localStorage.getItem("dataReview")) || []
+    const dataReviewSP=dataReview.reverse()
+    let dataReviewDisplay=[]
+    let dataReviewNone=[]
+    let html=""
+    dataReviewSP.forEach(item => {
+        if (item.maDichVu == dataItem.id){
+            dataReviewDisplay.push(item)
+            html+=`
+                <div class="comment-box">
+                    <div class="info-comment">
+                        <div class="info-user">
+                            <div class="img"><img src="/asset/img/avatar-default.jpg"></div>
+                            <p>${item.name}</p>
+                        </div>
+                        <div class="date-comment">${item.date}</div>
+                    </div>
+                    <div class="content-comment">${item.comment}</div>
+                    <div class="delete-review" data-name="${item.name}">xóa đánh giá</div>
+                </div>
+            `
+        }else{
+            dataReviewNone.push(item)
+        }
+    })
+    displayReview.innerHTML=html
+
+    document.querySelectorAll(".delete-review").forEach((item,i) => {
+        item.addEventListener("click",()=>{
+            if (localStorage.getItem("status") == 0){
+                alert("Vui lòng đăng nhập để thực hiện tác vụ này")
+                return
+            }
+            if (item.dataset.name != localStorage.getItem("nameUser")){
+                alert("bạn không thể xóa bình luận này")
+                return
+            }
+            dataReviewDisplay.splice(i,1)
+            localStorage.setItem("dataReview",JSON.stringify(dataReviewDisplay.concat(dataReviewNone)))
+            reviewUI()
+        })
+    })
+
+}
+reviewUI()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // ----trạng thái ---
 if (localStorage.getItem("status")==1){

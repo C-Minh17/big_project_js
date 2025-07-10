@@ -1360,8 +1360,11 @@ header{
 .info-item .box-info{
     display:flex;
 }
-.info-item .box-info .info-detail{
+.info-item .container-info{
     width: 68%;
+}
+.info-item .box-info .info-detail{
+    width: 100%;
     display: flex;
 }
 .info-item .box-info .info-detail>p{
@@ -1389,6 +1392,88 @@ header{
     height:auto;
     margin:20px 0;
 }
+
+.reviews-item{
+    width: 100%;
+    display: flex;
+    margin-top: 10px;
+}
+.reviews-item>p{
+    width: 15%;
+    font-size: 20px;
+    font-weight: 500;
+    border-right: 1px #222 solid;
+    padding:10px;
+}
+.reviews-item .box-review{
+    flex:1;
+    padding:5px 20px;
+}
+.input-review form{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction:row-reverse;
+}
+.input-review textarea{
+    width: 100%;
+    height:100px;
+    padding:10px;
+    outline:none;
+}
+.input-review button{
+    padding:12px 20px;
+    background-color: #008489;
+    color:#fff;
+    font-size: 15px;
+    font-weight: 400;
+    border-radius: 3px;
+    margin:10px;
+    margin-bottom: 50px;
+    outline: none;
+    border: none;
+}
+.comment-box{
+    border-bottom: 1px #999 solid;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+.info-comment{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.info-user{
+    display:flex;
+    align-items: center;
+}
+.info-user .img{
+    width:50px;
+    height:50px;
+    border-radius: 50px;
+}
+.info-user .img img{
+    width:100%;
+    height:100%;
+    border-radius: 50px;
+}
+.info-user p{
+    font-weight: 500;
+    font-size: 18px;
+    margin-left: 7px;
+}
+.delete-review{
+    width: 100%;
+    text-align: end;
+    font-size: 14px;
+    cursor: pointer;
+}
+.delete-review:hover{
+    color:red;
+}
+
+
 
 .info-item .box-info .pay-item{
     flex:1;

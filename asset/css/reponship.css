@@ -1,4 +1,119 @@
+@media (max-width:1200px){
+    .tag-menu .extra .bars{
+        display: block;
+        cursor: pointer;
+    }
+    .tag-menu .menu{
+        display: none;
+    }
+    .tag-menu{
+        justify-content: space-between;
+    }
+    .info-web{
+        position: relative  ;
+    }
+
+}
+
+@media (max-width:992px){
+    .info-item .box-info{
+        flex-wrap: wrap;
+    }
+    .info-item .container-info{
+        width: 100%;
+    }
+    .info-item .box-info .info-detail{
+        width: 100%;
+        display: block;
+    }
+    .info-item .box-info .info-detail>p{
+        border: none;
+        border-bottom:1px #222 solid;
+        padding:0;
+        width: 130px;
+    }
+    .info-item .box-info .info-detail .info-item{
+        padding:20px 0;
+    }
+
+    .reviews-item{
+        display: block;
+    }
+    .reviews-item>p{
+        border: none;
+        border-bottom:1px #222 solid;
+        padding:0;
+        width: 90px;
+        margin-bottom: 15px;
+    }
+
+}
+
+
+
+@media (max-width:768px){
+    /* index */
+    .info-web .info .held{
+        width:100%;
+        margin-bottom:20px;
+    }
+    .info-web .info .about{
+        width:100%;
+        margin-bottom:20px;
+    }
+    .info-web .info .discover{
+        width:100%;
+        margin-bottom:20px;
+    }
+    .info-web .info .setting{
+        width:100%;
+        margin-bottom:20px;
+    }
+ 
+    .info-web .info .setting div{
+        width:100%;
+    }
+
+
+    /* tour */
+    .form-box .content-form .list-item .display-gird .item{
+        width:100%;
+    }
+    .form-box .content-form .list-item .display-list .item .content .evalual{
+        display: none;
+    }
+
+    /* history */
+    .history {
+        padding:50px 5px;
+    }
+
+    /* item */
+    .item-home .title{
+        padding-left:50px;
+    }
+    .item-home .title h1{
+        font-size: 30px;
+        font-weight: bold;
+    }
+    .item-home .title p{
+        font-size: 13px;
+    }
+    .item-home .price{
+        z-index: 1;
+        right:50px;
+        font-size: 40px;
+        font-weight: 500;
+    }
+
+}
+
+
+
+
+
 @media (max-width:576px){
+    /* index */
     .categorys .box{
         height:200px;
     }
@@ -9,5 +124,104 @@
     .categorys h2{
         left:0;
     }
+    .menu-two .img{
+        background-image: url("/asset/img/logo_sticky_2x.png");
+        background-size: cover;
+        width:130px;
+        height:28px;
+    }
+    .menu-two-element a{
+        font-size: 12px;
+        font-weight: 600;
+    }
+    .nav-bar .phone{
+        display: none;
+    }
+    .nav-bar{
+        flex-direction:row-reverse;
+    }
+    .tag-menu .logo .img{
+        width:140px;
+        height:29px;
+    }
 
+    /* dichvu */
+    .form-box .content-form .nav .icon{
+        display: none;
+    }
+    .form-box .content-form .list-item .display-list {
+        display: none;
+    }
+    .form-box .content-form .list-item .display-gird{
+        display: flex;
+    }
+    .form-box .content-form .list-item .display-gird .item{
+        width:100%;
+    }
+
+    .restaurant-home .title h1{
+        font-size: 35px;
+    }
+    .restaurant-home .title p{
+        font-size: 14px;
+    }
+
+    .transportation-home .title h1{
+        font-size: 35px;
+    }
+    .transportation-home .title p{
+        font-size: 14px;
+    }
+
+    .hotel-home .title h1{
+        font-size: 35px;
+    }
+    .hotel-home .title p{
+        font-size: 14px;
+    }
+
+    .tour-home .title h1{
+        font-size: 35px;
+    }
+    .tour-home .title p{
+        font-size: 14px;
+    }
+
+
+    /* wishlist */
+    .popup-wish{
+        width:90%;
+        height:auto;
+    }
+    .popup-wish-list .title h3{
+        font-size: 14px;
+    }
+    .popup-wish-list .title p{
+        font-size: 12px;
+    }
+    .popup-wish-list .price {
+        font-size: 16px;
+    }
+
+    /* history */
+    .history h2{
+        font-size: 20px;
+    }
+    .history .list-history li{
+        font-size: 9px;
+    }
+    .history .header-history li{
+        font-weight: 500;
+        font-size: 11px;
+    }
+
+
+    /* item */
+    .item-home .title{
+        display: none;
+    }
 }
+
+
+
+

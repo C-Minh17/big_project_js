@@ -99,8 +99,9 @@ header{
     font-size: 20px;
     color:white;
 }
-.tag-menu .extra .search{
+.tag-menu .extra .bars{
     margin-right:10px;
+    display: none;
 }
 
 /* scroll */
@@ -132,6 +133,67 @@ header{
 }
 
 /* ---------- */
+
+/* menu 2----- */
+.menu-two{
+    display: block;
+    position: fixed;
+    z-index: 200;
+    top: 0;
+    left:0;
+    width:40%;
+    height:100%;
+    background-color: #fff;
+    transition: transform 0.3s linear;
+    transform:translateX(-800px) ;
+}
+.menu-two .close-menu{
+    width: 100%;
+    text-align: end;
+    padding:5px;
+    font-size: 18px;
+}
+.menu-two .logo{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 50px 0;
+}
+.menu-two .img{
+    background-image: url("/asset/img/logo_sticky_2x.png");
+    background-size: cover;
+    width:160px;
+    height:35px;
+}
+
+.menu-two-element a{
+    display: block;
+    border-bottom:1px #ddd solid ;
+    padding: 10px 10px;
+    cursor: pointer;
+    outline: none;
+    color:black;
+    font-size: 16px;
+    font-weight: 500;
+}
+.menu-two-element a:hover{
+    background-color: #aea8a8;
+}
+
+.overlay-bars {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* mờ đen 40% */
+    z-index: 100;
+}
+.overlay-bars.hidden-overlay{
+    display:block;
+}
+
 
 /* -----back-top--- */
 .back-top{
@@ -225,12 +287,15 @@ header{
 }
 .popup-wish-list .title h3{
     margin:0;
-    font-size: 22px;
+    font-size: 18px;
+}
+.popup-wish-list .title p{
+    font-size: 15px;
 }
 .popup-wish-list .price {
     flex: 1;
     text-align: center;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 400;
 }
 
@@ -293,6 +358,7 @@ header{
 }
 .categorys .slide{
     padding:0;
+    height:100%
 }
 .overlay {
     position: absolute;
@@ -446,7 +512,7 @@ header{
 }
 .top-tour .prev{
     position: absolute;
-    bottom:300px;
+    bottom:50%;
     left:30px;
     border-radius: 50px;
     background-color: rgb(241, 237, 237);
@@ -455,10 +521,11 @@ header{
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 5;
 }
 .top-tour .next{
     position: absolute;
-    bottom:300px;
+    bottom:50%;
     right:30px;
     border-radius: 50px;
     background-color: rgb(241, 237, 237);
@@ -467,6 +534,7 @@ header{
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 5;
 }
 .top-tour .next:hover{
     background-color: rgb(217, 209, 209);
@@ -666,12 +734,13 @@ header{
 }
 .info-web .info{
     display: flex;
+    flex-wrap: wrap;
     color: white;
     padding:40px 0;
     padding-bottom: 30px;
 }
 .info-web .info .held{
-    width:34%;
+    width:31%;
 }
 .info-web .info .held a{
     margin:15px 0;
@@ -687,7 +756,7 @@ header{
     color:white;
 }
 .info-web .info .about,.discover{
-    width:26.33%;
+    width:25.33%;
     font-size:14px;
 }
 .info-web .info .about a{
@@ -1700,6 +1769,7 @@ header{
 .history .list-history ul{
     display:flex;
     text-align: center;
+    padding: 0;
 }
 .history .list-history li{
     list-style: none;

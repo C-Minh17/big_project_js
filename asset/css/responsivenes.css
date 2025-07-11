@@ -220,6 +220,30 @@
     .item-home .title{
         display: none;
     }
+
+    /* login */
+    .login-home .box-sign-in{
+        width: 90%;
+    }
+    .login-home .box-sign-in form{
+        width: 100%;
+    }
+    .login-home .box-sign-in label input{
+        width:100%;
+        height:35px;
+    }
+
+    .login-home .box-sign-up{
+        width: 90%;
+    }
+    .login-home .box-sign-up form{
+        width: 100%;
+    }
+    .login-home .box-sign-up label input{
+        width:100%;
+        height:35px;
+    }
+
 }
 
 

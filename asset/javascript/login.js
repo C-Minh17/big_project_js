@@ -18,6 +18,25 @@ window.addEventListener("scroll",()=>{
     }
 })
 
+// ---menu Two--
+const divBar=document.getElementById("barsMmenu")
+const closeBar=document.getElementById("closeMenu")
+const overlayBar=document.getElementById("overlayBars")
+
+divBar.addEventListener("click",()=>{
+    document.getElementById("menuBars").style.transform="translateX(0px)"
+    document.getElementById("overlayBars").classList.add("hidden-overlay")
+})
+closeBar.addEventListener("click",()=>{
+    document.getElementById("menuBars").style.transform="translateX(-500px)"
+    document.getElementById("overlayBars").classList.remove("hidden-overlay")
+})
+overlayBar.addEventListener("click",()=>{
+    document.getElementById("menuBars").style.transform="translateX(-500px)"
+    document.getElementById("overlayBars").classList.remove("hidden-overlay")
+})
+
+
 document.querySelector("#signUp").addEventListener("click",()=>{
     document.querySelector(".box-sign-up").style.display="flex";
     document.querySelector(".box-sign-in").style.display="none";

@@ -186,7 +186,9 @@ btReview.addEventListener("click",()=>{
         comment:commentReview.value,
         date:dateVN,
         name:localStorage.getItem("nameUser"),
-        maDichVu:dataItem.id
+        maDichVu:dataItem.id,
+        unVote:[],
+        upVote:[]
     }
     dataReview.push(data)
     localStorage.setItem("dataReview",JSON.stringify(dataReview))
@@ -196,7 +198,7 @@ btReview.addEventListener("click",()=>{
 const displayReview=document.querySelector("#displayReview")
 function reviewUI(){
     dataReview=JSON.parse(localStorage.getItem("dataReview")) || []
-    const dataReviewSP=dataReview.reverse()
+    const dataReviewSP=[...dataReview].reverse()
     let dataReviewDisplay=[]
     let dataReviewNone=[]
     let html=""
@@ -207,13 +209,21 @@ function reviewUI(){
                 <div class="comment-box">
                     <div class="info-comment">
                         <div class="info-user">
-                            <div class="img"><img src="/asset/img/avatar-default.jpg"></div>
+                            <div class="img"><img src="/asset/img/avatar-default.png"></div>
                             <p>${item.name}</p>
                         </div>
                         <div class="date-comment">${item.date}</div>
                     </div>
                     <div class="content-comment">${item.comment}</div>
-                    <div class="delete-review" data-name="${item.name}">xóa đánh giá</div>
+                    <div class="nav-review">
+                        <div class=votes>
+                            <i class="up-vote fa-solid fa-thumbs-up"></i>
+                            <span class="upCount">${item.upVote.length}</span>
+                            <i class="un-vote fa-solid fa-thumbs-down"></i>
+                            <span class="unCount">${item.unVote.length}</span>
+                        </div>
+                        <div class="delete-review" data-name="${item.name}">xóa đánh giá</div>
+                    </div>
                 </div>
             `
         }else{
@@ -233,7 +243,102 @@ function reviewUI(){
                 return
             }
             dataReviewDisplay.splice(i,1)
-            localStorage.setItem("dataReview",JSON.stringify(dataReviewDisplay.concat(dataReviewNone)))
+            localStorage.setItem("dataReview",JSON.stringify(dataReviewDisplay.reverse().concat(dataReviewNone)))
+            reviewUI()
+        })
+    })
+    // ---upvote--
+    document.querySelectorAll(".up-vote").forEach((item,i) => {
+        const user = localStorage.getItem("nameUser");
+        const dataItem = dataReviewDisplay[i];
+        const votes = dataItem.upVote;
+        if (votes.includes(user)) {
+            item.classList.add("color");
+        }
+        item.addEventListener("click",()=>{
+            if (localStorage.getItem("status") == 0){
+                alert("Vui lòng đăng nhập để thực hiện tác vụ này")
+                return
+            }
+            let user=localStorage.getItem("nameUser")
+            let dataItem=dataReviewDisplay[i]
+            let votes=dataItem.upVote
+            let votesKtra=dataItem.unVote
+            if (votes.length == 0){
+                votesKtra.forEach((item,i)=>{
+                    if (item == user){
+                        votesKtra.splice(i,1)
+                    }
+                })
+                votes.push(user)
+            }else{
+                votes.forEach((ele,e) => {
+                    if (ele == user){
+                        votes.splice(e,1)
+                    }else{
+                        votesKtra.forEach((item,i)=>{
+                            if (item == user){
+                                votesKtra.splice(i,1)
+                            }
+                        })
+                        votes.push(user)
+                    }
+                })
+            }
+
+            dataItem.upVote=votes
+            dataItem.unVote=votesKtra
+            dataReviewDisplay[i]=dataItem
+
+            localStorage.setItem("dataReview",JSON.stringify(dataReviewDisplay.reverse().concat(dataReviewNone)))
+            reviewUI()
+        })
+    })
+
+    // ---unvote--
+    document.querySelectorAll(".un-vote").forEach((item,i) => {
+        const user = localStorage.getItem("nameUser");
+        const dataItem = dataReviewDisplay[i];
+        const votes = dataItem.unVote;
+        if (votes.includes(user)) {
+            item.classList.add("color");
+        }
+        item.addEventListener("click",()=>{
+            if (localStorage.getItem("status") == 0){
+                alert("Vui lòng đăng nhập để thực hiện tác vụ này")
+                return
+            }
+            let user=localStorage.getItem("nameUser")
+            let dataItem=dataReviewDisplay[i]
+            let votes=dataItem.unVote
+            let votesKtra=dataItem.upVote
+            if (votes.length == 0){
+                votesKtra.forEach((item,i)=>{
+                    if (item == user){
+                        votesKtra.splice(i,1)
+                    }
+                })
+                votes.push(user)
+            }else{
+                votes.forEach((ele,e) => {
+                    if (ele == user){
+                        votes.splice(e,1)
+                    }else{
+                        votesKtra.forEach((item,i)=>{
+                            if (item == user){
+                                votesKtra.splice(i,1)
+                            }
+                        })
+                        votes.push(user)
+                    }
+                })
+            }
+
+            dataItem.unVote=votes
+            dataItem.upVote=votesKtra
+            dataReviewDisplay[i]=dataItem
+
+            localStorage.setItem("dataReview",JSON.stringify(dataReviewDisplay.reverse().concat(dataReviewNone)))
             reviewUI()
         })
     })

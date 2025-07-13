@@ -1532,8 +1532,24 @@ header{
     font-size: 18px;
     margin-left: 7px;
 }
+.nav-review{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+.nav-review .votes i{
+    font-size: 20px;
+}
+.nav-review .votes .color{
+    color:#9CDCFE;
+}
+.nav-review .votes span{
+    font-size: 17px;
+    font-weight: 500;
+    margin-right: 10px;
+    margin-left: 5px;
+}
 .delete-review{
-    width: 100%;
     text-align: end;
     font-size: 14px;
     cursor: pointer;
